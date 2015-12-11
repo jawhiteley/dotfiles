@@ -20,11 +20,11 @@ This way, I can keep all my common dotfiles in one place, managed in a git repos
 
 # Tools
 
-[GitHub](https://github.com/)
-[GitHub Desktop](https://desktop.github.com)
-[My repos](https://github.com/jawhiteley/)
+* [GitHub](https://github.com/)
+* [GitHub Desktop](https://desktop.github.com)
+* [My repos](https://github.com/jawhiteley/)
 
 # More Reading
 
-https://dotfiles.github.io
-https://github.com/dotphiles/dotphiles
+* https://dotfiles.github.io
+* https://github.com/dotphiles/dotphiles
