@@ -1,0 +1,13 @@
+## http://stackoverflow.com/questions/1189759/expert-r-users-whats-in-your-rprofile
+options("width"=80)                # display width
+
+## from the AER book by Zeileis and Kleiber
+options(prompt="R> ", digits=4, show.signif.stars=FALSE)
+options(continue="... ")    # more obvious than "+"
+
+## Stop prompting me to save the workspace
+q <- function (save="no", ...) {
+  quit(save=save, ...)
+}
+
+message("**** Loaded common Rprofile for Jonathan Whiteley ****")

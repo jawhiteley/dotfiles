@@ -1,0 +1,11 @@
+source('~/--JAW config files/R/Rprofile-jaw')
+
+###=============================================================
+### System-specific settings
+
+### for vim-R plugin
+## http://www.lepem.ufc.br/jaa/r-plugin.html#r-plugin-installation
+library(vimcom)
+options(vimcom.verbose = 1)
+
+message("**** Loaded local .Rprofile for Jonathan Whiteley ****")
