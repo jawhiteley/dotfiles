@@ -1,0 +1,9 @@
+# Unison preferences file
+label = Short description - this determines the width of the window.
+root = C:\Users\[userid]\local
+root = [remote]
+# Ignore some common files that can cause problems on Windows.
+ignore = Name {Thumbs.db}
+ignore = Name {.Rhistory}
+ignore = Name {,.}*{.swp}
+ignore = Name {,.}*{.R~}

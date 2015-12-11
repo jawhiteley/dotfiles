@@ -1,0 +1,29 @@
+" Jonathan Whiteley     2015-12-10
+" ================================================================
+" On Mac or unix, put this into the usual /vimrc file for your user account.
+" On Windows, I usually put this file right into /vimfiles (the 2nd place Windows looks for a vimrc file).
+
+" ================================================================
+" Get common personal settings
+
+" Folder in which this script resides: (not safe for symlinks)
+let g:vimf_path = expand('<sfile>:p:h')
+" Location of common files (absolute path on this system)
+let jaw_path = fnameescape( expand('~/Documents/ My Documents/config files/_dotfiles/Vim') )
+" run common personal commands
+execute 'source ' . jaw_path . '/vimrc-jaw' 
+
+
+" ================================================================
+" System-specific local settings and runtime commands
+
+if has('gui_running')
+  set guifont=Consolas:h13 " set font face and size
+  set lsp=2                " Line-spacing: # pixels between lines
+endif
+
+" Fullscreen options for MacVim
+if has('gui_macvim')
+  set fuoptions=maxvert,maxhorz
+  set lines=64 columns=96
+endif

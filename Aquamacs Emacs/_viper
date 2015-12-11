@@ -1,0 +1,5 @@
+(setq viper-inhibit-startup-message 't) ; no startup message.
+(setq viper-expert-level '3)            ; as close to Vim as viper-mode can get.  1-5 (viper recommends >= 3.
+; (define-key viper-insert-diehard-map (kbd "TAB") 'viper-insert-tab)  ; recover Emacs <TAB> behaviour in levels 1-2.
+  ; see http://stackoverflow.com/questions/1094329/insert-spaces-instead-of-tab-in-emacs-viper-mode
+(define-key viper-vi-global-user-map ";" 'execute-extended-command)  ; same as M-x in Emacs

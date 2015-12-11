@@ -1,0 +1,177 @@
+" Jonathan Whiteley     2015-12-10
+" Personal settings for Vim common to all platforms and systems
+
+set nocompatible    " prevents vim from emulating the original vi's bugs and limitations. "
+
+" Path to vimrc file: this should be set in the vimrc file itself, which calls
+" this one.
+" Folder in which this script resides: (not safe for symlinks)
+let s:path = resolve( expand('<sfile>:p:h') )
+
+" Load platform-specific settings
+if has('macunix')
+  " do stuff for Mac
+  let g:vimf_path .= '/.vim'
+  " Fullscreen options 
+  if has('gui_macvim')
+    set fuoptions=maxvert,maxhorz
+    set lines=64 columns=96
+  endif
+elseif has('unix')
+  " do stuff for Unix
+  let g:vimf_path .= '/.vim'
+elseif has('win32') || has ('win64')
+  " do stuff for Windows
+  "let g:vimf_path .= '/vimfiles'   " I usually keep my vimrc file *inside* /vimfiles on Windows
+  source <sfile>:h/mswin.vim
+endif
+
+
+" ================================================================
+" General Settings, behaviour
+set incsearch       " show search results while typing
+
+
+" ================================================================
+" Display Appearance & Style
+if has('gui_running')
+  set guioptions-=T " hide toolbar by default
+  set guifont=Consolas:h12  " set font face and size
+endif
+
+set number          " show line numbers
+set ruler	        " show the cursor position all the time
+set lsp=2           " Line-spacing: # pixels between lines
+set linebreak		" wrap long lines *between* words
+
+" Colours
+  " dark schemes are easier for editing a lot of code
+  " lighter schemes are easier on the eyes when 
+  " switching with other applications with a light bg
+  " preferred dark  schemes: zenburn, wood, desert, darkerdesert 
+  " preferred light schemes: beachcomber, sand, proton, neutron, earthburn, khaki, vylight
+colorscheme zenburn
+" not included in MacVim, but worth checking out ( ^ popular, * like ):
+  " http://code.google.com/p/vimcolorschemetest/
+  " light:  autumn, biogoo, colorful, dawn, delphi, earthburn, emacs, google,
+  "         ironman, jhlight, lightcolors, louver, moria, nedit, oceanlight,
+  "         osx_like, peaksea, proton, sienna, tidy *, vylight, xemacs
+  " cream:  wood *, autumn2, beachcomber *, buttercream, khaki, LightTan, LightYellow,
+  "         mellow X, sand *, sf, navajo ^
+  " medium: blackdust, camo, freya, kellys, two2tango, whitedust
+  " dark:   ir_black ^, wombat ^, wombat256, desertEX, evening, industrial, inkpot,
+  "         neon, revolutions, slate2, watermark, xoria256
+  " low-contrast light:
+  "     earthburn, oceanlight, proton *, neutron, donbass
+  " low-contrast dark:
+  "     blackdust, carvedwood, carvedwoodcool, coffee, darker-robin,
+  "     darkerdesert *, hhazure, industrial, watermark, zenburn *^
+
+
+" Indentation.  Oy.
+set autoindent      " copy indent from current line when starting a new one (except with #)
+set smartindent     " do smart 'autoindenting' when starting a new line
+set expandtab		" indent with spaces - do not use actual <TAB> characters.
+set tabstop=4       " where tabstops are placed (every X columns)
+set softtabstop=4   " tab indents rather than inserting <TAB>
+set shiftwidth=2    " # of spaces for indentation
+
+
+" Custom Keybindings
+"   <C-]> goes to a linked tag, <C-T> goes back.  
+"   Why not use <C-[> to do the same? (easier mnemonic)
+map <C-[> <C-T>
+" Vim MarkDown Preview
+map <leader>p :Mm<CR>
+" conflicts with Vim-R plugin: map <D-CR> :Mm<CR>
+
+
+" ================================================================
+" PLUGINS - managed with vim-plug
+" https://github.com/junegunn/vim-plug
+"  Requires git
+"  http://git-scm.com/download/
+" See also Vundle documentation for similar examples
+"  https://github.com/VundleVim/Vundle.vim
+
+call plug#begin(g:vimf_path . '/Plugins') " make path system-independent?
+
+" sensible default settings; I already use many of these here.
+Plug 'tpope/vim-sensible'
+" Automatic text alignment
+Plug 'Align'
+" Manage 'surroundings': quotes, parentheses, XML tags, etc.
+Plug 'surround.vim'
+" matchit: extended % matching for HTML, LaTeX, and many other languages
+Plug 'matchit.zip'
+" SnipMate: TextMate-style snippets for Vim
+Plug 'snipMate'
+
+" Vim + R : order matters
+Plug 'jalvesaq/R-Vim-runtime'
+Plug 'Vim-R-plugin'
+
+" Markdown preview?
+" Plug 'vim-scripts/markdown-preview.vim'
+
+" Add plugins to &runtimepath
+call plug#end()
+
+syntax enable 
+filetype plugin on 
+filetype indent on 
+
+
+" ================================================================
+" Additional settings for Vim-R-plugin
+let vimrplugin_i386 = 1         "use 32-bit version of R (a little faster)
+let r_indent_ess_comments = 1   "indent R comments like in ESS.
+let r_syntax_folding = 1        "automatically fold code based on syntax
+let vimrplugin_underscore = 0   "do not replace underscores with ' <- '
+" .vim/ftplugin/r_jaw.vim contains custom key maps for the assignment operator
+" in R files.
+
+" Vim-R-plugin custom key bindings 
+" also see .vim/ftplugin/r_jaw.vim
+" smartindent: do not ignore lines starting with #: X CTL-V CTL-H #
+inoremap # X#
+
+" Some plugin functions don't seem to work on their own?
+map <D-CR> <Plug>RSendLine
+" imap <D-CR> <Plug>RSendLine
+" vmap <D-CR> <Plug>RSendLine
+nmap <F3> <Plug>RDSendLine
+imap <F3> <Plug>RDSendLine
+vmap <F3> <Plug>RDSendSelection
+
+
+
+" ================================================================
+" FUNCTIONS
+
+" SuperCleverTab from
+" http://blogs.gnome.org/lharris/2008/07/20/code-completion-with-vim-7/
+function! SuperCleverTab()
+    if strpart(getline('.'), 0, col('.') - 1) =~ '^\s*$'
+        return "\<Tab>"
+    else
+        if &omnifunc != ''
+            return "\<C-X>\<C-O>"
+        elseif &dictionary != ''
+            return "\<C-K>"
+        else
+            return "\<C-N>"
+        endif
+    endif
+endfunction
+
+inoremap <C-Tab> <C-R>=SuperCleverTab()<cr>
+
+" Convenient command to see the difference between the current buffer and the
+" file it was loaded from, thus the changes you made.
+" Only define it when not defined already.
+if !exists(":DiffOrig")
+  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
+		  \ | wincmd p | diffthis
+endif
+
