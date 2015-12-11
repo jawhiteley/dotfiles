@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/Users/jaw/Documents/ My Documents/ Academic/EndNote Libraries/ Bib scripts/Zotero-scripts/Zotero-undo'
+let g:netrw_dirhist_2='/Users/jaw/Library/texmf/bibtex/bst'
+let g:netrw_dirhist_3='/Users/jaw/Library/texmf/bibtex'
+let g:netrw_dirhist_4='/Users/jaw/Documents/ My Documents/config files/_dotfiles/Vim'
