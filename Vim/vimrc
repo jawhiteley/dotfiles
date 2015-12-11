@@ -1,24 +1,33 @@
-" Jonathan Whiteley     2015-12-10
+" Jonathan Whiteley     2015-12-11
 " ================================================================
-" On Mac or unix, put this into the usual /vimrc file for your user account.
+" On Mac or unix, put this into the usual .vimrc file for your user account.
 " On Windows, I usually put this file right into /vimfiles (the 2nd place Windows looks for a vimrc file).
 
 " ================================================================
 " Get common personal settings
 
-" Folder in which this script resides: (not safe for symlinks)
-let g:vimf_path = expand('<sfile>:p:h')
 " Location of common files (absolute path on this system)
-let jaw_path = fnameescape( expand('~/Documents/ My Documents/config files/_dotfiles/Vim') )
-" run common personal commands
-execute 'source ' . jaw_path . '/vimrc-jaw' 
+let $DOTVIM   = 'C:\Users\jwhitele\Documents\--JAW config files\Vim'
+let $DOTVIMRC  = $DOTVIM . '\vimrc-jaw' " works better if slash is platform-specific (backslash on Windows).
+" so I can just :e $DOTVIMRC
+" fnameescape() is recommended to make paths syntactically correct, 
+" but this also seems to produce a string that makes :e $DOTVIMRC not work. :/
+let g:vim_common   = fnameescape( $DOTVIM )
+let g:vimrc_common = fnameescape( $DOTVIMRC )
+
+" Folder in which this script resides: (not safe for symlinks)
+" - used in $DOTVIMRC
+let g:vimf_path = resolve( expand('<sfile>:p:h') )
+" Run common personal commands
+" execute 'source ' . g:vimrc_common
+source $DOTVIMRC
 
 
 " ================================================================
 " System-specific local settings and runtime commands
 
 if has('gui_running')
-  set guifont=Consolas:h13 " set font face and size
+  set guifont=Consolas:h10 " set font face and size
   set lsp=2                " Line-spacing: # pixels between lines
 endif
 
@@ -27,3 +36,4 @@ if has('gui_macvim')
   set fuoptions=maxvert,maxhorz
   set lines=64 columns=96
 endif
+
