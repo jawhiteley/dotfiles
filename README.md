@@ -17,3 +17,14 @@ Platform-specific commands and settings are often kept in separate files.
 Because I find there are almost always system-specific settings --- like font sizes, window sizes, or other ideosyncracies of a particular environment. 
 I do not want to sync these across systems, but I do want common settings to be easily accessible and automatically updated across systems.
 This way, I can keep all my common dotfiles in one place, managed in a git repository, while also allowing for system-specific settings.
+
+# Tools
+
+[GitHub](https://github.com/)
+[GitHub Desktop](https://desktop.github.com)
+[My repos](https://github.com/jawhiteley/)
+
+# More Reading
+
+https://dotfiles.github.io
+https://github.com/dotphiles/dotphiles
