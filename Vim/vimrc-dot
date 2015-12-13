@@ -10,6 +10,7 @@ set nocompatible
 " Folder in which this script resides: (not safe for symlinks)
 let s:path = resolve( expand('<sfile>:p:h') )
 
+" ================================================================
 " Load platform-specific settings
 if has('macunix')
   " do stuff for Mac
@@ -27,6 +28,55 @@ elseif has('win32') || has ('win64')
   "let g:vimf_path .= '/vimfiles'   " I usually keep my vimrc file *inside* /vimfiles on Windows
   source <sfile>:h/mswin.vim
 endif
+
+
+" ================================================================
+" PLUGINS - managed with vim-plug
+" https://github.com/junegunn/vim-plug
+"  Requires git
+"  http://git-scm.com/download/
+" See also Vundle documentation for similar examples
+"  https://github.com/VundleVim/Vundle.vim
+
+" Plugins managed this way will not be available until after plug#end(); this
+" is what 'loads' them.
+
+if v:version >= 700     " try only works in vim 7 or later
+  try       " in case plug.vim is not installed.
+
+    call plug#begin(g:vimf_path . '/Plugins') " make path system-independent?
+
+    " sensible default settings; I already use many of these here.
+    Plug 'tpope/vim-sensible'
+    " Automatic text alignment
+    Plug 'Align'
+    " Manage 'surroundings': quotes, parentheses, XML tags, etc.
+    Plug 'surround.vim'
+    " matchit: extended % matching for HTML, LaTeX, and many other languages
+    Plug 'matchit.zip'
+    " SnipMate: TextMate-style snippets for Vim
+    Plug 'snipMate'
+
+    " Vim + R : order matters
+    Plug 'jalvesaq/R-Vim-runtime'
+    Plug 'Vim-R-plugin'
+
+    " Markdown preview? [check path]
+    " Plug 'vim-scripts/markdown-preview.vim'
+
+    " Solarized colour scheme --- http://ethanschoonover.com/solarized
+    Plug 'altercation/vim-colors-solarized'
+
+    " Add plugins to &runtimepath
+    call plug#end()
+
+  catch
+  endtry
+endif
+
+syntax enable 
+filetype plugin on 
+filetype indent on 
 
 
 " ================================================================
@@ -53,8 +103,10 @@ set linebreak		" wrap long lines *between* words
   " preferred dark  schemes: solarized-dark, zenburn, wood, desert, darkerdesert 
   " preferred light schemes: solarized-light, beachcomber, sand, proton, neutron, earthburn, khaki, vylight
 silent! colorscheme zenburn
-silent! colorscheme solarized
-set background=light
+if has('gui_running')
+  silent! colorscheme solarized
+  set background=light
+endif
 " not included in MacVim, but worth checking out ( ^ popular, * like ):
   " http://code.google.com/p/vimcolorschemetest/
   " light:  autumn, biogoo, colorful, dawn, delphi, earthburn, emacs, google,
@@ -95,51 +147,6 @@ endif
 noremap <leader>p :Mm<CR>
 " conflicts with Vim-R plugin: map <D-CR> :Mm<CR>
 
-
-" ================================================================
-" PLUGINS - managed with vim-plug
-" https://github.com/junegunn/vim-plug
-"  Requires git
-"  http://git-scm.com/download/
-" See also Vundle documentation for similar examples
-"  https://github.com/VundleVim/Vundle.vim
-
-if v:version >= 700     " try only works in vim 7 or later
-  try       " in case plug.vim is not installed.
-
-    call plug#begin(g:vimf_path . '/Plugins') " make path system-independent?
-
-    " sensible default settings; I already use many of these here.
-    Plug 'tpope/vim-sensible'
-    " Automatic text alignment
-    Plug 'Align'
-    " Manage 'surroundings': quotes, parentheses, XML tags, etc.
-    Plug 'surround.vim'
-    " matchit: extended % matching for HTML, LaTeX, and many other languages
-    Plug 'matchit.zip'
-    " SnipMate: TextMate-style snippets for Vim
-    Plug 'snipMate'
-
-    " Vim + R : order matters
-    Plug 'jalvesaq/R-Vim-runtime'
-    Plug 'Vim-R-plugin'
-
-    " Markdown preview? [check path]
-    " Plug 'vim-scripts/markdown-preview.vim'
-
-    " Solarized colour scheme --- http://ethanschoonover.com/solarized
-    Plug 'altercation/vim-colors-solarized'
-
-    " Add plugins to &runtimepath
-    call plug#end()
-
-  catch
-  endtry
-endif
-
-syntax enable 
-filetype plugin on 
-filetype indent on 
 
 
 " ================================================================
