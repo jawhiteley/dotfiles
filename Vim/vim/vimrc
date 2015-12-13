@@ -7,8 +7,8 @@
 " Get common personal settings
 
 " Location of common files (absolute path on this system)
-let $DOTVIM   = 'C:\Users\jwhitele\Documents\--JAW config files\Vim'
-let $DOTVIMRC  = $DOTVIM . '\vimrc-jaw' " works better if slash is platform-specific (backslash on Windows).
+let $DOTVIM   = '~/.dotfiles/Vim'
+let $DOTVIMRC  = $DOTVIM . '/vimrc-dot' " works better if slash is platform-specific (backslash on Windows).
 " so I can just :e $DOTVIMRC
 " fnameescape() is recommended to make paths syntactically correct, 
 " but this also seems to produce a string that makes :e $DOTVIMRC not work. :/

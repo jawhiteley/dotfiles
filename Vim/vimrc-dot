@@ -1,7 +1,9 @@
 " Jonathan Whiteley     2015-12-10
 " Personal settings for Vim common to all platforms and systems
 
-set nocompatible    " prevents vim from emulating the original vi's bugs and limitations. "
+" Prevent vim from emulating the original vi's bugs and limitations
+" Before doing anything else
+set nocompatible
 
 " Path to vimrc file: this should be set in the vimrc file itself, which calls
 " this one.
@@ -94,6 +96,8 @@ map <leader>p :Mm<CR>
 " See also Vundle documentation for similar examples
 "  https://github.com/VundleVim/Vundle.vim
 
+if exists("*plug#begin")
+ 
 call plug#begin(g:vimf_path . '/Plugins') " make path system-independent?
 
 " sensible default settings; I already use many of these here.
@@ -116,6 +120,8 @@ Plug 'Vim-R-plugin'
 
 " Add plugins to &runtimepath
 call plug#end()
+
+endif
 
 syntax enable 
 filetype plugin on 
