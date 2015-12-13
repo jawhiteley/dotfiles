@@ -1,4 +1,4 @@
-" Jonathan Whiteley     2015-12-10
+" Jonathan Whiteley     2015-12-13
 " Personal settings for Vim common to all platforms and systems
 
 " Prevent vim from emulating the original vi's bugs and limitations
@@ -38,7 +38,7 @@ set incsearch       " show search results while typing
 " Display Appearance & Style
 if has('gui_running')
   set guioptions-=T " hide toolbar by default
-  set guifont=Consolas:h12  " set font face and size
+  set guifont=Consolas:h12  " set font face and size. I like Consolas or Menlo
 endif
 
 set number          " show line numbers
@@ -50,9 +50,11 @@ set linebreak		" wrap long lines *between* words
   " dark schemes are easier for editing a lot of code
   " lighter schemes are easier on the eyes when 
   " switching with other applications with a light bg
-  " preferred dark  schemes: zenburn, wood, desert, darkerdesert 
-  " preferred light schemes: beachcomber, sand, proton, neutron, earthburn, khaki, vylight
-colorscheme zenburn
+  " preferred dark  schemes: solarized-dark, zenburn, wood, desert, darkerdesert 
+  " preferred light schemes: solarized-light, beachcomber, sand, proton, neutron, earthburn, khaki, vylight
+silent! colorscheme zenburn
+silent! colorscheme solarized
+set background=light
 " not included in MacVim, but worth checking out ( ^ popular, * like ):
   " http://code.google.com/p/vimcolorschemetest/
   " light:  autumn, biogoo, colorful, dawn, delphi, earthburn, emacs, google,
@@ -68,6 +70,7 @@ colorscheme zenburn
   " low-contrast dark:
   "     blackdust, carvedwood, carvedwoodcool, coffee, darker-robin,
   "     darkerdesert *, hhazure, industrial, watermark, zenburn *^
+  " Solarized^*:  http://ethanschoonover.com/solarized
 
 
 " Indentation.  Oy.
@@ -79,12 +82,17 @@ set softtabstop=4   " tab indents rather than inserting <TAB>
 set shiftwidth=2    " # of spaces for indentation
 
 
-" Custom Keybindings
-"   <C-]> goes to a linked tag, <C-T> goes back.  
-"   Why not use <C-[> to do the same? (easier mnemonic)
-map <C-[> <C-T>
+" Custom key bindings
+
+" <C-]> goes to a linked tag, <C-T> goes back.  
+" Why not use <C-[> to do the same? (easier mnemonic)
+" Note: <Esc> is also often mapped to <C-T> by default.
+if has('gui_running')
+  " [this triggers E73 error in terminal vim on mac: silent! does not help]
+  silent! noremap <C-[> <C-T>
+endif
 " Vim MarkDown Preview
-map <leader>p :Mm<CR>
+noremap <leader>p :Mm<CR>
 " conflicts with Vim-R plugin: map <D-CR> :Mm<CR>
 
 
@@ -96,31 +104,37 @@ map <leader>p :Mm<CR>
 " See also Vundle documentation for similar examples
 "  https://github.com/VundleVim/Vundle.vim
 
-if exists("*plug#begin")
- 
-call plug#begin(g:vimf_path . '/Plugins') " make path system-independent?
+if v:version >= 700     " try only works in vim 7 or later
+  try       " in case plug.vim is not installed.
 
-" sensible default settings; I already use many of these here.
-Plug 'tpope/vim-sensible'
-" Automatic text alignment
-Plug 'Align'
-" Manage 'surroundings': quotes, parentheses, XML tags, etc.
-Plug 'surround.vim'
-" matchit: extended % matching for HTML, LaTeX, and many other languages
-Plug 'matchit.zip'
-" SnipMate: TextMate-style snippets for Vim
-Plug 'snipMate'
+    call plug#begin(g:vimf_path . '/Plugins') " make path system-independent?
 
-" Vim + R : order matters
-Plug 'jalvesaq/R-Vim-runtime'
-Plug 'Vim-R-plugin'
+    " sensible default settings; I already use many of these here.
+    Plug 'tpope/vim-sensible'
+    " Automatic text alignment
+    Plug 'Align'
+    " Manage 'surroundings': quotes, parentheses, XML tags, etc.
+    Plug 'surround.vim'
+    " matchit: extended % matching for HTML, LaTeX, and many other languages
+    Plug 'matchit.zip'
+    " SnipMate: TextMate-style snippets for Vim
+    Plug 'snipMate'
 
-" Markdown preview?
-" Plug 'vim-scripts/markdown-preview.vim'
+    " Vim + R : order matters
+    Plug 'jalvesaq/R-Vim-runtime'
+    Plug 'Vim-R-plugin'
 
-" Add plugins to &runtimepath
-call plug#end()
+    " Markdown preview? [check path]
+    " Plug 'vim-scripts/markdown-preview.vim'
 
+    " Solarized colour scheme --- http://ethanschoonover.com/solarized
+    Plug 'altercation/vim-colors-solarized'
+
+    " Add plugins to &runtimepath
+    call plug#end()
+
+  catch
+  endtry
 endif
 
 syntax enable 
@@ -134,15 +148,17 @@ let vimrplugin_i386 = 1         "use 32-bit version of R (a little faster)
 let r_indent_ess_comments = 1   "indent R comments like in ESS.
 let r_syntax_folding = 1        "automatically fold code based on syntax
 let vimrplugin_underscore = 0   "do not replace underscores with ' <- '
+let vimrplugin_assign = 2       "use two underscores to insert assignment operator '<-'
+let vimrplugin_assign_map = '__' "what to convert into ' <- '
 " .vim/ftplugin/r_jaw.vim contains custom key maps for the assignment operator
 " in R files.
 
-" Vim-R-plugin custom key bindings 
+" vim-R-plugin custom key bindings 
 " also see .vim/ftplugin/r_jaw.vim
 " smartindent: do not ignore lines starting with #: X CTL-V CTL-H #
 inoremap # X#
 
-" Some plugin functions don't seem to work on their own?
+" Custom key bindings
 map <D-CR> <Plug>RSendLine
 " imap <D-CR> <Plug>RSendLine
 " vmap <D-CR> <Plug>RSendLine
