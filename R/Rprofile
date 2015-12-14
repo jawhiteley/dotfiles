@@ -3,12 +3,5 @@ source('~/.dotfiles/R/Rprofile-dot')
 ###=============================================================
 ### System-specific settings
 
-### for vim-R plugin
-## http://www.lepem.ufc.br/jaa/r-plugin.html#r-plugin-installation
-if(interactive())
-{
-  options(vimcom.verbose = 1)
-    library(vimcom)
-}
 
-message("**** Loaded local .Rprofile for Jonathan Whiteley ****")
+# message("**** Loaded local .Rprofile for Jonathan Whiteley ****")

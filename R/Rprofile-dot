@@ -10,4 +10,13 @@ q <- function (save="no", ...) {
   quit(save=save, ...)
 }
 
+### For vim-R plugin
+## http://www.lepem.ufc.br/jaa/r-plugin.html#r-plugin-installation
+if(interactive())
+{
+  options(vimcom.verbose = 1)
+  require(vimcom)     # only load required package if installed
+}
+
+
 message("**** Loaded common Rprofile for Jonathan Whiteley ****")
