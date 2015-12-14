@@ -97,6 +97,19 @@ if has("autocmd")
   " autocmd BufEnter * silent! lcd %:p:h
 endif
 
+" Format options
+" Only change one at a time!
+" :help formatoptions
+" :help fo-table
+" t: auto-wrap text to textwidth
+" c: auto-wrap comments to textwidth
+" o: extend comments on o or O
+set formatoptions-=t fo-=c fo-=o
+" q: allow formatting of comments with 'gq'
+set formatoptions+=q fo+=r fo+=n fo+=j fo+=l fo+=w
+" Need an autocmd on new buffer to ensure changes are made *after* filetype plugins are loaded. :(
+autocmd BufNewFile,BufRead * setlocal formatoptions-=t fo-=c fo-=o
+autocmd BufNewFile,BufRead * setlocal formatoptions+=r fo+=q fo+=n fo+=j fo+=l fo+=w
 
 " ================================================================
 " Display Appearance & Style
