@@ -32,6 +32,7 @@ checkdirs()
   # if [[ ! -d $DOTFILEDIR ]]; then
     # Put a symbolic link to dotfiles directory at the desired Install Location
     echo -e "*** Symlinking dotfiles directory: ***\n    $DIR\n    -> $DOTFILEDIR"
+    # adding -v option to ln can also generate similar output:  target -> source
     symlink "$DIR" "$DOTFILEDIR"
   # fi
 }
