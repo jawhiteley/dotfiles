@@ -30,10 +30,14 @@ checkdirs()
     mkdir -p $BACKUPDIR
   fi
   # if [[ ! -d $DOTFILEDIR ]]; then
+    # Check that $DIR and $DOTFILEDIR are not the same:
+    #   If they are, no need to symlink! [UNTESTED]
+    #if [[ "$DIR" != "$DOTFILEDIR" ]]
     # Put a symbolic link to dotfiles directory at the desired Install Location
     echo -e "*** Symlinking dotfiles directory: ***\n    $DIR\n    -> $DOTFILEDIR"
     # adding -v option to ln can also generate similar output:  target -> source
     symlink "$DIR" "$DOTFILEDIR"
+    #fi
   # fi
 }
 
