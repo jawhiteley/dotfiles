@@ -1,7 +1,7 @@
-" Jonathan Whiteley     2015-12-10
+" Jonathan Whiteley     2015-12-14
 " Settings specific to MS Windows
 "  include at start of standard vimrc with:
-" source ~/vimfiles/mswin.vim
+"  source <sfile>:h/mswin.vim
 
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
@@ -10,9 +10,9 @@ behave mswin
 " On windows, the vim directory is `~/vimfiles` instead of `~/.vim`
 " Set this as a variable to use in main vimrc?
 
-" Windows function (from default vimrc, but I don't want the other stuff in there.
+" Windows function (from default vimrc, but I don't want the other stuff in there).
 set diffexpr=MyDiff()
-function MyDiff()
+function! MyDiff()
   let opt = '-a --binary '
   if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
   if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif

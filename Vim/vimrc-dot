@@ -1,4 +1,4 @@
-" Jonathan Whiteley     2015-12-13
+" Jonathan Whiteley     2015-12-14
 " Personal settings for Vim common to all platforms and systems
 
 " Prevent vim from emulating the original vi's bugs and limitations
@@ -81,7 +81,21 @@ filetype indent on
 
 " ================================================================
 " General Settings, behaviour
-set incsearch       " show search results while typing
+" search settings
+set incsearch           " Incremental search
+set hlsearch            " Highlight search match
+set ignorecase          " Do case insensitive matching
+set smartcase           " do not ignore if search pattern has CAPS
+
+" directory settings
+set nobackup            " do not write backup files
+"set noswapfile          " do not write .swp files
+
+" change the local working directory of the window to be the same as the
+" current file:
+if has("autocmd")
+  " autocmd BufEnter * silent! lcd %:p:h
+endif
 
 
 " ================================================================
@@ -152,11 +166,12 @@ noremap <leader>p :Mm<CR>
 " ================================================================
 " Additional settings for Vim-R-plugin
 let vimrplugin_i386 = 1         "use 32-bit version of R (a little faster)
+let vimrplugin_r_args = "--sdi --no-save"
 let r_indent_ess_comments = 1   "indent R comments like in ESS.
 let r_syntax_folding = 1        "automatically fold code based on syntax
 let vimrplugin_underscore = 0   "do not replace underscores with ' <- '
-let vimrplugin_assign = 2       "use two underscores to insert assignment operator '<-'
-let vimrplugin_assign_map = '__' "what to convert into ' <- '
+let vimrplugin_assign = 2       "use two underscores to insert assignment operator ' <- '
+let vimrplugin_assign_map = '--' "what to convert into ' <- '
 " .vim/ftplugin/r_jaw.vim contains custom key maps for the assignment operator
 " in R files.
 
