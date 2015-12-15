@@ -104,12 +104,13 @@ endif
 " t: auto-wrap text to textwidth
 " c: auto-wrap comments to textwidth
 " o: extend comments on o or O
-set formatoptions-=t fo-=c fo-=o
+" j: strip comment leader when joining lines: not available in older versions (hence, the silent!)
+silent! set formatoptions-=t fo-=c fo-=o
 " q: allow formatting of comments with 'gq'
-set formatoptions+=q fo+=r fo+=n fo+=j fo+=l fo+=w
+silent! set formatoptions+=q fo+=r fo+=n fo+=j fo+=l fo+=w
 " Need an autocmd on new buffer to ensure changes are made *after* filetype plugins are loaded. :(
-autocmd BufNewFile,BufRead * setlocal formatoptions-=t fo-=c fo-=o
-autocmd BufNewFile,BufRead * setlocal formatoptions+=r fo+=q fo+=n fo+=j fo+=l fo+=w
+autocmd BufNewFile,BufRead * silent! setlocal formatoptions-=t fo-=c fo-=o
+autocmd BufNewFile,BufRead * silent! setlocal formatoptions+=r fo+=q fo+=n fo+=j fo+=l fo+=w
 
 " ================================================================
 " Display Appearance & Style
@@ -130,9 +131,12 @@ set linebreak		" wrap long lines *between* words
   " preferred dark  schemes: solarized-dark, zenburn, wood, desert, darkerdesert 
   " preferred light schemes: solarized-light, beachcomber, sand, proton, neutron, earthburn, khaki, vylight
 silent! colorscheme zenburn
+set background=light
 if has('gui_running')
   silent! colorscheme solarized
-  set background=light
+else
+  " solarized looks terrible in terminal, unless it is configured to use Solarized's palette
+  let g:solarized_termcolors=256    " do this *before* changing the colorscheme to solarized.
 endif
 " not included in MacVim, but worth checking out ( ^ popular, * like ):
   " http://code.google.com/p/vimcolorschemetest/
