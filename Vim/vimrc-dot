@@ -188,7 +188,7 @@ let r_indent_ess_comments = 1   "indent R comments like in ESS.
 let r_syntax_folding = 1        "automatically fold code based on syntax
 let vimrplugin_underscore = 0   "do not replace underscores with ' <- '
 let vimrplugin_assign = 2       "use two underscores to insert assignment operator ' <- '
-let vimrplugin_assign_map = '--' "what to convert into ' <- '
+"let vimrplugin_assign_map = '--' "what to convert into ' <- '; not working?
 " .vim/ftplugin/r_jaw.vim contains custom key maps for the assignment operator
 " in R files.
 
