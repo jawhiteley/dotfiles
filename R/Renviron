@@ -1,0 +1,4 @@
+## Default zip/unzip commands
+# Needed for `openxlsx` package.
+R_UNZIPCMD='unzip'
+R_ZIPCMD='zip'
