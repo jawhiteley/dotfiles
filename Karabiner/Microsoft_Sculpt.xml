@@ -1,0 +1,388 @@
+<?xml version="1.0"?>
+<root>
+  <!-- http://calebhicks.com/2016/karabiner-for-sculpt/ -->
+
+  <devicevendordef>
+    <vendorname>Microsoft</vendorname>
+    <vendorid>0x045e</vendorid>
+  </devicevendordef>
+
+  <deviceproductdef>
+    <productname>Sculpt</productname>
+    <productid>0x07a5</productid>
+  </deviceproductdef>
+
+  <item>
+    <name>* Microsoft Sculpt Ergo</name>
+
+    <item>
+      <name>Sculpt Alt to Command</name>
+      <appendix>This maps the Microsoft Sculpt's ALT Key to Command.</appendix>
+      <identifier>sculpt.alt_to_command</identifier>
+      <device_only>DeviceVendor::Microsoft, DeviceProduct::Sculpt</device_only>
+      <autogen>
+        __KeyToKey__
+        KeyCode::OPTION_L,
+        KeyCode::COMMAND_L
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::OPTION_R,
+        KeyCode::COMMAND_R
+      </autogen>
+    </item>
+
+    <item>
+      <name>Sculpt Windows to Option</name>
+      <appendix>This maps the Microsoft Sculpt's Windows Key to Option.</appendix>
+      <identifier>sculpt.windows_to_option</identifier>
+      <device_only>DeviceVendor::Microsoft, DeviceProduct::Sculpt</device_only>
+      <autogen>
+        __KeyToKey__
+        KeyCode::COMMAND_L,
+        KeyCode::OPTION_L
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::PC_APPLICATION,
+        KeyCode::OPTION_R
+      </autogen>
+    </item>
+
+    <symbol_map type="KeyCode" name="MY_CAPSLOCK" value="0x70" />
+
+    <item>
+      <name>Sculpt CapsLock (via Seil) to Function key</name>
+      <appendix>CapLock is special: use Seil to remap it to keycode 112 (unused).</appendix>
+      <appendix>Other useful keycodes include: 114 (HELP / Insert key); 10 (DANISH_DOLLAR).</appendix>
+      <appendix>keycode 63 (Fn) does not work directly.</appendix>
+      <identifier>sculpt.capslock_to_fn</identifier>
+      <device_only>DeviceVendor::Microsoft, DeviceProduct::Sculpt</device_only>
+      <autogen>
+        __KeyToKey__
+        KeyCode::MY_CAPSLOCK,
+        KeyCode::FN
+      </autogen>
+    </item>
+
+    <item>
+      <name>Sculpt Insert to Function key</name>
+      <identifier>sculpt.insert_to_fn</identifier>
+      <device_only>DeviceVendor::Microsoft, DeviceProduct::Sculpt</device_only>
+      <autogen>
+        __KeyToKey__
+        KeyCode::HELP,
+        KeyCode::FN
+      </autogen>
+    </item>
+
+    <!-- differentiate function and functional keys by holding; I usually use modifier keys instead -->
+    <item>
+      <name>Sculpt F1...F6: short (function keys) and hold (functional)</name>
+      <appendix>short -> F1...F6; long -> functional</appendix>
+      <appendix>F1  -> Prev track</appendix>
+      <appendix>F2  -> Next track</appendix>
+      <appendix>F3  -> Play / Pause</appendix>
+      <appendix>F4  -> Mute</appendix>
+      <appendix>F5  -> Volume -</appendix>
+      <appendix>F6  -> Volume +</appendix>
+      <identifier>sculpt.f1_f6_hold_functional</identifier>
+      <device_only>DeviceVendor::Microsoft, DeviceProduct::Sculpt</device_only>
+      <autogen>
+        __HoldingKeyToKey__
+        KeyCode::F1, ModifierFlag::NONE,
+        <!-- short press -->
+        @begin
+        KeyCode::F1,
+        @end
+        <!-- hold -->
+        @begin
+        KeyCode::VK_CONSUMERKEY_BRIGHTNESS_DOWN,
+        @end
+        Option::NOREPEAT,
+      </autogen>
+      <autogen>
+        __HoldingKeyToKey__
+        KeyCode::F2, ModifierFlag::NONE,
+        <!-- short press -->
+        @begin
+        KeyCode::F2,
+        @end
+        <!-- hold -->
+        @begin
+        KeyCode::VK_CONSUMERKEY_BRIGHTNESS_UP,
+        @end
+        Option::NOREPEAT,
+      </autogen>
+      <autogen>
+        __HoldingKeyToKey__
+        KeyCode::F3, ModifierFlag::NONE,
+        <!-- short press -->
+        @begin
+        KeyCode::F3,
+        @end
+        <!-- hold -->
+        @begin
+        KeyCode::EXPOSE_ALL,
+        @end
+        Option::NOREPEAT,
+      </autogen>
+      <autogen>
+        __HoldingKeyToKey__
+        KeyCode::F4, ModifierFlag::NONE,
+        <!-- short press -->
+        @begin
+        KeyCode::F4,
+        @end
+        <!-- hold -->
+        @begin
+        KeyCode::CURSOR_DOWN, ModifierFlag::CONTROL_R,
+        @end
+        Option::NOREPEAT,
+      </autogen>
+      <autogen>
+        __HoldingKeyToKey__
+        KeyCode::F5, ModifierFlag::NONE,
+        <!-- short press -->
+        @begin
+        KeyCode::F5,
+        @end
+        <!-- hold -->
+        @begin
+        KeyCode::DASHBOARD,
+        @end
+        Option::NOREPEAT,
+      </autogen>
+      <autogen>
+        __HoldingKeyToKey__
+        KeyCode::F6, ModifierFlag::NONE,
+        <!-- short press -->
+        @begin
+        KeyCode::F6,
+        @end
+        <!-- hold -->
+        @begin
+        KeyCode::LAUNCHPAD,
+        @end
+        Option::NOREPEAT,
+      </autogen>
+
+    </item>
+
+    <item>
+      <name>Sculpt F7...F12: short (functional media) and hold (function keys)</name>
+      <appendix>short -> Media; long -> F7...F12</appendix>
+      <appendix>F7  -> Prev track</appendix>
+      <appendix>F8  -> Next track</appendix>
+      <appendix>F9  -> Play / Pause</appendix>
+      <appendix>F10 -> Mute</appendix>
+      <appendix>F11 -> Volume -</appendix>
+      <appendix>F12 -> Volume +</appendix>
+      <identifier>sculpt.f7_f12_hold_media</identifier>
+      <device_only>DeviceVendor::Microsoft, DeviceProduct::Sculpt</device_only>
+
+      <autogen>
+        __KeyToKey__
+        KeyCode::F7, ModifierFlag::FN,
+        KeyCode::F7
+      </autogen>
+      <autogen>
+        __HoldingKeyToKey__
+        KeyCode::F7, ModifierFlag::NONE,
+        <!-- short press -->
+        @begin
+        KeyCode::VK_CONSUMERKEY_MUSIC_PREV,
+        @end
+        <!-- hold -->
+        @begin
+        KeyCode::F7,
+        @end
+        Option::NOREPEAT,
+      </autogen>
+
+      <autogen>
+        __KeyToKey__
+        KeyCode::F8, ModifierFlag::FN,
+        KeyCode::F8
+      </autogen>
+      <autogen>
+        __HoldingKeyToKey__
+        KeyCode::F8, ModifierFlag::NONE,
+        <!-- short press -->
+        @begin
+        KeyCode::VK_CONSUMERKEY_MUSIC_NEXT,
+        @end
+        <!-- hold -->
+        @begin
+        KeyCode::F8,
+        @end
+        Option::NOREPEAT,
+      </autogen>
+
+      <autogen>
+        __KeyToKey__
+        KeyCode::F9, ModifierFlag::FN,
+        KeyCode::F9
+      </autogen>
+      <autogen>
+        __HoldingKeyToKey__
+        KeyCode::F9, ModifierFlag::NONE,
+        <!-- short press -->
+        @begin
+        KeyCode::VK_CONSUMERKEY_MUSIC_PLAY,
+        @end
+        <!-- hold -->
+        @begin
+        KeyCode::F9,
+        @end
+        Option::NOREPEAT,
+      </autogen>
+
+      <autogen>
+        __KeyToKey__
+        KeyCode::F10, ModifierFlag::FN,
+        KeyCode::F10
+      </autogen>
+      <autogen>
+        __HoldingKeyToKey__
+        KeyCode::F10, ModifierFlag::NONE,
+        <!-- short press -->
+        @begin
+        KeyCode::VK_CONSUMERKEY_VOLUME_MUTE,
+        @end
+        <!-- hold -->
+        @begin
+        KeyCode::F10,
+        @end
+        Option::NOREPEAT,
+      </autogen>
+
+      <autogen>
+        __KeyToKey__
+        KeyCode::F11, ModifierFlag::FN,
+        KeyCode::F11
+      </autogen>
+      <autogen>
+        __HoldingKeyToKey__
+        KeyCode::F11, ModifierFlag::NONE,
+        <!-- short press -->
+        @begin
+        KeyCode::VK_CONSUMERKEY_VOLUME_DOWN,
+        @end
+        <!-- hold -->
+        @begin
+        KeyCode::F11,
+        @end
+        Option::NOREPEAT,
+      </autogen>
+
+      <autogen>
+        __KeyToKey__
+        KeyCode::F12, ModifierFlag::FN,
+        KeyCode::F12
+      </autogen>
+      <autogen>
+        __HoldingKeyToKey__
+        KeyCode::F12, ModifierFlag::NONE,
+        <!-- short press -->
+        @begin
+        KeyCode::VK_CONSUMERKEY_VOLUME_UP,
+        @end
+        <!-- hold -->
+        @begin
+        KeyCode::F12,
+        @end
+        Option::NOREPEAT,
+      </autogen>
+
+    </item>
+
+    <item>
+      <name>Change Option+F1...F12 to Functional Keys</name>
+      <appendix>F1  -> Brightness -</appendix>
+      <appendix>F2  -> Brightness +</appendix>
+      <appendix>F3  -> All Windows</appendix>
+      <appendix>F4  -> Application Windows</appendix>
+      <appendix>F5  -> Dashboard</appendix>
+      <appendix>F6  -> Launchpad</appendix>
+      <appendix>F7  -> Prev track</appendix>
+      <appendix>F8  -> Next track</appendix>
+      <appendix>F9  -> Play / Pause</appendix>
+      <appendix>F10 -> Mute</appendix>
+      <appendix>F11 -> Volume -</appendix>
+      <appendix>F12 -> Volume +</appendix>
+      <identifier>sculpt.option_f1_f12_to_functional</identifier>
+      <device_only>DeviceVendor::Microsoft, DeviceProduct::Sculpt</device_only>
+      <autogen>__KeyToKey__ KeyCode::F1,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::VK_CONSUMERKEY_BRIGHTNESS_DOWN</autogen>
+      <autogen>__KeyToKey__ KeyCode::F2,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::VK_CONSUMERKEY_BRIGHTNESS_UP</autogen>
+      <autogen>__KeyToKey__ KeyCode::F3,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::EXPOSE_ALL</autogen>
+      <autogen>__KeyToKey__ KeyCode::F4,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::CURSOR_DOWN, ModifierFlag::CONTROL_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::F5,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::DASHBOARD</autogen>
+      <autogen>__KeyToKey__ KeyCode::F6,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::LAUNCHPAD</autogen>
+      <autogen>__KeyToKey__ KeyCode::F7,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, ConsumerKeyCode::MUSIC_PREV</autogen>
+      <autogen>__KeyToKey__ KeyCode::F8,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, ConsumerKeyCode::MUSIC_NEXT</autogen>
+      <autogen>__KeyToKey__ KeyCode::F9,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, ConsumerKeyCode::MUSIC_PLAY</autogen>
+      <autogen>__KeyToKey__ KeyCode::F10, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, ConsumerKeyCode::VOLUME_MUTE</autogen>
+      <autogen>__KeyToKey__ KeyCode::F11, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, ConsumerKeyCode::VOLUME_DOWN</autogen>
+      <autogen>__KeyToKey__ KeyCode::F12, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, ConsumerKeyCode::VOLUME_UP</autogen>
+    </item>
+
+    <item>
+      <name>Change Fn+F1...F12 to Functional Keys</name>
+      <appendix>F1  -> Brightness -</appendix>
+      <appendix>F2  -> Brightness +</appendix>
+      <appendix>F3  -> All Windows</appendix>
+      <appendix>F4  -> Application Windows</appendix>
+      <appendix>F5  -> Dashboard</appendix>
+      <appendix>F6  -> Launchpad</appendix>
+      <appendix>F7  -> Prev track</appendix>
+      <appendix>F8  -> Next track</appendix>
+      <appendix>F9  -> Play / Pause</appendix>
+      <appendix>F10 -> Mute</appendix>
+      <appendix>F11 -> Volume -</appendix>
+      <appendix>F12 -> Volume +</appendix>
+      <identifier>private.fn_f1_f12_to_functional</identifier>
+      <!-- <device_only>DeviceVendor::Microsoft, DeviceProduct::Sculpt</device_only> -->
+      <autogen>__KeyToKey__ KeyCode::F1,  ModifierFlag::FN, KeyCode::VK_CONSUMERKEY_BRIGHTNESS_DOWN</autogen>
+      <autogen>__KeyToKey__ KeyCode::F2,  ModifierFlag::FN, KeyCode::VK_CONSUMERKEY_BRIGHTNESS_UP</autogen>
+      <autogen>__KeyToKey__ KeyCode::F3,  ModifierFlag::FN, KeyCode::EXPOSE_ALL</autogen>
+      <autogen>__KeyToKey__ KeyCode::F4,  ModifierFlag::FN, KeyCode::CURSOR_DOWN, ModifierFlag::CONTROL_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::F5,  ModifierFlag::FN, KeyCode::DASHBOARD</autogen>
+      <autogen>__KeyToKey__ KeyCode::F6,  ModifierFlag::FN, KeyCode::LAUNCHPAD</autogen>
+      <autogen>__KeyToKey__ KeyCode::F7,  ModifierFlag::FN, ConsumerKeyCode::MUSIC_PREV</autogen>
+      <autogen>__KeyToKey__ KeyCode::F8,  ModifierFlag::FN, ConsumerKeyCode::MUSIC_NEXT</autogen>
+      <autogen>__KeyToKey__ KeyCode::F9,  ModifierFlag::FN, ConsumerKeyCode::MUSIC_PLAY</autogen>
+      <autogen>__KeyToKey__ KeyCode::F10, ModifierFlag::FN, ConsumerKeyCode::VOLUME_MUTE</autogen>
+      <autogen>__KeyToKey__ KeyCode::F11, ModifierFlag::FN, ConsumerKeyCode::VOLUME_DOWN</autogen>
+      <autogen>__KeyToKey__ KeyCode::F12, ModifierFlag::FN, ConsumerKeyCode::VOLUME_UP</autogen>
+    </item>
+
+    <!--
+    <item>
+      <name>Remap Fn-F8 to iTunes Next Track</name>
+      <appendix>This maps the Microsoft Sculpt's Windows button on the mouse to F13.</appendix>
+      <identifier>sculpt.iTunes_next</identifier>
+      <device_only>DeviceVendor::Microsoft, DeviceProduct::Sculpt</device_only>
+      <autogen>
+        __KeyToKey__
+        KeyCode::F21,
+        ConsumerKeyCode::MUSIC_NEXT
+      </autogen>
+    </item>
+    -->
+
+
+    <item>
+      <name>Remap Sculpt Windows button on mouse to Launchpad</name>
+      <appendix>This maps the Microsoft Sculpt's Windows button on the mouse to Launchpad.</appendix>
+      <identifier>sculpt.windows_to_launchpad</identifier>
+      <device_only>DeviceVendor::Microsoft, DeviceProduct::Sculpt</device_only>
+      <autogen>
+        __KeyToKey__
+        KeyCode::COMMAND_R,
+        KeyCode::LAUNCHPAD
+      </autogen>
+    </item>
+
+  </item>
+</root>

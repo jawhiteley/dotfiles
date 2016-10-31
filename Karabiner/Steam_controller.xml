@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<root>
+  <!-- https://steamcommunity.com/app/353370/discussions/0/392183857629429442/ -->
+
+  <devicevendordef>
+    <vendorname>Valve</vendorname>
+    <vendorid>0x28de</vendorid>
+  </devicevendordef>
+
+  <deviceproductdef>
+    <productname>Steam_controller</productname>
+    <!-- <productid>0x1147</productid> -->
+    <productid>0x1102</productid>
+  </deviceproductdef>
+
+  <item>
+    <name>* Steam Controller bugs</name>
+
+    <item>
+      <name>Correct Volume Up [from F17]</name>
+      <identifier>private.steam_controller.change_f17_to_volume_up</identifier>
+      <device_only>DeviceVendor::Valve, DeviceProduct::Steam_controller</device_only>
+      <autogen>__KeyToKey__ KeyCode::F17, ConsumerKeyCode::VOLUME_UP</autogen>
+    </item>
+
+    <item>
+      <name>Correct Volume Down [from F18]</name>
+      <identifier>private.steam_controller.change_f18_to_volume_down</identifier>
+      <device_only>DeviceVendor::Valve, DeviceProduct::Steam_controller</device_only>
+      <autogen>__KeyToKey__ KeyCode::F18, ConsumerKeyCode::VOLUME_DOWN</autogen>
+    </item>
+
+    <item>
+      <name>Correct Mute [from F17]</name>
+      <identifier>private.steam_controller.change_f17_to_volume_mute</identifier>
+      <device_only>DeviceVendor::Valve, DeviceProduct::Steam_controller</device_only>
+      <autogen>__KeyToKey__ KeyCode::F19, ConsumerKeyCode::VOLUME_MUTE</autogen>
+    </item>
+
+    <item>
+      <name>Correct Left Shift [from Menu Key/APPlication Key]</name>
+      <identifier>private.steam_controller.change_menu_key_to_left_shift</identifier>
+      <device_only>DeviceVendor::Valve, DeviceProduct::Steam_controller</device_only>
+      <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, KeyCode::SHIFT_L</autogen>
+    </item>
+
+    <item>
+      <name>Correct Right Shift [from Brightness Down]</name>
+      <identifier>private.steam_controller.change_brightness_down_to_right_shift</identifier>
+      <device_only>DeviceVendor::Valve, DeviceProduct::Steam_controller</device_only>
+      <autogen>__KeyToKey__ ConsumerKeyCode::BRIGHTNESS_DOWN, KeyCode::SHIFT_R</autogen>
+    </item>
+
+    <item>
+      <name>Correct Left Control [from Numpad Equals]</name>
+      <identifier>private.steam_controller.change_numpad_equals_to_left_control</identifier>
+      <device_only>DeviceVendor::Valve, DeviceProduct::Steam_controller</device_only>
+      <autogen>__KeyToKey__ KeyCode::KEYPAD_EQUAL, KeyCode::CONTROL_L</autogen>
+    </item>
+
+    <item>
+      <name>Correct Left Option (alt) [from § Danish Dollar]</name>
+      <identifier>private.steam_controller.change_danish_dollar_to_left_alt</identifier>
+      <device_only>DeviceVendor::Valve, DeviceProduct::Steam_controller</device_only>
+      <autogen>__KeyToKey__ KeyCode::DANISH_DOLLAR, KeyCode::OPTION_L</autogen>
+    </item>
+
+    <item>
+      <name>Correct Right Alt [from F13]</name>
+      <identifier>private.steam_controller.change_f13_to_alt_right</identifier>
+      <device_only>DeviceVendor::Valve, DeviceProduct::Steam_controller</device_only>
+      <autogen>__KeyToKey__ KeyCode::F13, KeyCode::OPTION_R</autogen>
+    </item>
+
+    <item>
+      <name>Correct Left Control (alt) [from F16]</name>
+      <identifier>private.steam_controller.change_f16_to_control_right</identifier>
+      <device_only>DeviceVendor::Valve, DeviceProduct::Steam_controller</device_only>
+      <autogen>__KeyToKey__ KeyCode::F16, KeyCode::CONTROL_R</autogen>
+    </item>
+
+    <item>
+      <name>Power Button correction (only works up to OS X Mountain Lion, 10.8)</name>
+      <item>
+        <name style="caution">Caution:</name>
+        <appendix>Karabiner has removed power button support since OS X 10.9.</appendix>
+        <appendix>You can no longer change the power button on MacBook.</appendix>
+      </item>
+
+      <item>
+        <name>Correct Left Command (Windows Key) [from Power Key]</name>
+        <identifier>private.steam_controller.change_power_to_left_command</identifier>
+        <device_only>DeviceVendor::Valve, DeviceProduct::Steam_controller</device_only>
+        <autogen>__KeyToKey__ ConsumerKeyCode::POWER, KeyCode::SPACE</autogen>
+      </item>
+    </item>
+  </item>
+
+</root>
