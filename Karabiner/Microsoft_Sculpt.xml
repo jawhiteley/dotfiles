@@ -16,9 +16,11 @@
     <name>* Microsoft Sculpt Ergo</name>
 
     <item>
-      <name>Sculpt Alt to Command</name>
-      <appendix>This maps the Microsoft Sculpt's ALT Key to Command.</appendix>
-      <identifier>sculpt.alt_to_command</identifier>
+      <name>Sculpt swap Command and Option</name>
+      <appendix>This swaps the default Command and Option keys to match a layout more familiar to Mac users.</appendix>
+      <appendix>Option  [Alt] -> Command</appendix>
+      <appendix>Command [Windows] -> Option</appendix>
+      <identifier>sculpt.swap_command_option</identifier>
       <device_only>DeviceVendor::Microsoft, DeviceProduct::Sculpt</device_only>
       <autogen>
         __KeyToKey__
@@ -30,18 +32,18 @@
         KeyCode::OPTION_R,
         KeyCode::COMMAND_R
       </autogen>
-    </item>
-
-    <item>
-      <name>Sculpt Windows to Option</name>
-      <appendix>This maps the Microsoft Sculpt's Windows Key to Option.</appendix>
-      <identifier>sculpt.windows_to_option</identifier>
-      <device_only>DeviceVendor::Microsoft, DeviceProduct::Sculpt</device_only>
       <autogen>
         __KeyToKey__
         KeyCode::COMMAND_L,
         KeyCode::OPTION_L
       </autogen>
+    </item>
+
+    <item>
+      <name>Sculpt Application to Option</name>
+      <appendix>This maps the Microsoft Sculpt's Application key to Option.</appendix>
+      <identifier>sculpt.application_to_option</identifier>
+      <device_only>DeviceVendor::Microsoft, DeviceProduct::Sculpt</device_only>
       <autogen>
         __KeyToKey__
         KeyCode::PC_APPLICATION,
@@ -61,7 +63,14 @@
       <autogen>
         __KeyToKey__
         KeyCode::MY_CAPSLOCK,
-        KeyCode::FN
+        KeyCode::FN,
+
+        <!-- double-tap for Fn-lock -->
+        Option::KEYTOKEY_DELAYED_ACTION,
+        KeyCode::MY_CAPSLOCK,
+        
+        Option::KEYTOKEY_DELAYED_ACTION_CANCELED_BY, KeyCode::MY_CAPSLOCK,
+        KeyCode::VK_LOCK_FN
       </autogen>
     </item>
 
@@ -74,6 +83,18 @@
         KeyCode::HELP,
         KeyCode::FN
       </autogen>
+    </item>
+
+    <item>
+      <name>Shift_L+Shift_R to CapsLock</name>
+      <appendix>(+ Shift_R to turn CapsLock off)</appendix>
+      <identifier>sculpt.shiftLshiftR_to_capslock</identifier>
+      <device_only>DeviceVendor::Microsoft, DeviceProduct::Sculpt</device_only>
+      <block>
+        <modifier_only>ModifierFlag::CAPSLOCK</modifier_only>
+        <autogen>__KeyToKey__ KeyCode::SHIFT_R, KeyCode::CAPSLOCK, KeyCode::SHIFT_R</autogen>
+      </block>
+      <autogen>__KeyToKey__ KeyCode::SHIFT_R, ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
     </item>
 
     <!-- differentiate function and functional keys by holding; I usually use modifier keys instead -->
