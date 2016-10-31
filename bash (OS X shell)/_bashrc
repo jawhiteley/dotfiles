@@ -1,0 +1,3 @@
+## .bashrc is run when bash is invoked as a login shell (not interactive); 
+## .bash_profile is only run when bash is started as an interactive shell
+source .bash_profile

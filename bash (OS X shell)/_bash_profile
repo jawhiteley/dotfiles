@@ -1,5 +1,7 @@
-PATH=${PATH}:/usr/local/mysql/bin
+## .bash_profile is only run when bash is started as an interactive shell
+## .bashrc is run when bash is invoked as a login shell (not interactive); 
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+PATH=${PATH}:/usr/local/mysql/bin
 export PATH="$PATH:~/bin/bibtexformat"
 # Setting PATH for Python 3.2
 # The orginal version is saved in .bash_profile.pysave
