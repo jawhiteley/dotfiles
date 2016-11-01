@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <root>
+  <include path="{{ ENV_HOME }}/.dotfiles/Karabiner/custom_keys.xml" />
   <include path="{{ ENV_HOME }}/.dotfiles/Karabiner/Microsoft_Sculpt.xml" />
   <include path="{{ ENV_HOME }}/.dotfiles/Karabiner/Steam_controller.xml" />
 </root>

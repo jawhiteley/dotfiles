@@ -51,29 +51,6 @@
       </autogen>
     </item>
 
-    <symbol_map type="KeyCode" name="MY_CAPSLOCK" value="0x70" />
-
-    <item>
-      <name>Sculpt CapsLock (via Seil) to Function key</name>
-      <appendix>CapLock is special: use Seil to remap it to keycode 112 (unused).</appendix>
-      <appendix>Other useful keycodes include: 114 (HELP / Insert key); 10 (DANISH_DOLLAR).</appendix>
-      <appendix>keycode 63 (Fn) does not work directly.</appendix>
-      <identifier>sculpt.capslock_to_fn</identifier>
-      <device_only>DeviceVendor::Microsoft, DeviceProduct::Sculpt</device_only>
-      <autogen>
-        __KeyToKey__
-        KeyCode::MY_CAPSLOCK,
-        KeyCode::FN,
-
-        <!-- double-tap for Fn-lock -->
-        Option::KEYTOKEY_DELAYED_ACTION,
-        KeyCode::MY_CAPSLOCK,
-        
-        Option::KEYTOKEY_DELAYED_ACTION_CANCELED_BY, KeyCode::MY_CAPSLOCK,
-        KeyCode::VK_LOCK_FN
-      </autogen>
-    </item>
-
     <item>
       <name>Sculpt Insert to Function key</name>
       <identifier>sculpt.insert_to_fn</identifier>
@@ -81,20 +58,25 @@
       <autogen>
         __KeyToKey__
         KeyCode::HELP,
-        KeyCode::FN
+        KeyCode::FN,
+        <!-- double-tap for Fn-lock -->
+        Option::KEYTOKEY_DELAYED_ACTION,
+        KeyCode::VK_NONE,
+        Option::KEYTOKEY_DELAYED_ACTION_CANCELED_BY, KeyCode::HELP,
+        KeyCode::VK_LOCK_FN,
+        KeyCode::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT, <!-- drop second key event -->
       </autogen>
     </item>
 
     <item>
-      <name>Shift_L+Shift_R to CapsLock</name>
-      <appendix>(+ Shift_R to turn CapsLock off)</appendix>
-      <identifier>sculpt.shiftLshiftR_to_capslock</identifier>
+      <name>Sculpt Esc to Function-Lock</name>
+      <identifier>sculpt.esc_to_fn_lock</identifier>
       <device_only>DeviceVendor::Microsoft, DeviceProduct::Sculpt</device_only>
-      <block>
-        <modifier_only>ModifierFlag::CAPSLOCK</modifier_only>
-        <autogen>__KeyToKey__ KeyCode::SHIFT_R, KeyCode::CAPSLOCK, KeyCode::SHIFT_R</autogen>
-      </block>
-      <autogen>__KeyToKey__ KeyCode::SHIFT_R, ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::ESCAPE,
+        KeyCode::VK_LOCK_FN,
+      </autogen>
     </item>
 
     <!-- differentiate function and functional keys by holding; I usually use modifier keys instead -->

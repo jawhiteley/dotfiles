@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<root>
+  <!-- Define keycode shortcut for keycode 112 (unused). Fn (keycode 63) does not work directly -->
+  <symbol_map type="KeyCode" name="MY_CAPSLOCK" value="0x70" />
+
+  <item>
+    <name>* JAW custom bindings for all keyboards</name>
+
+    <item>
+      <name>CapsLock (via Seil) to Esc + Hyper</name>
+      <appendix>CapLock is special: use Seil to remap it to F19.</appendix>
+      <appendix>Other useful keycodes include: 112 (unused, see above); 10 (DANISH_DOLLAR).</appendix>
+      <identifier>private.capslock_to_esc_hyper</identifier>
+      <!-- http://brettterpstra.com/2012/12/08/a-useful-caps-lock-key/ -->
+      <autogen>
+        __KeyOverlaidModifier__
+        <!-- from -->
+        KeyCode::F19,
+        <!-- to -->
+        KeyCode::COMMAND_L,
+        ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
+        <!-- + if pressed alone -->
+        KeyCode::ESCAPE
+      </autogen>
+    </item>
+
+    <item>
+      <name>Double-tap Fn for Fn-lock</name>
+      <identifier>private.fn_fn_lock</identifier>
+      <autogen>
+        __KeyToKey__
+        KeyCode::FN,  ModifierFlag::NONE,
+        KeyCode::FN,
+        <!-- double-tap for Fn-lock -->
+        Option::KEYTOKEY_DELAYED_ACTION,
+        KeyCode::VK_NONE,
+        Option::KEYTOKEY_DELAYED_ACTION_CANCELED_BY, KeyCode::FN,
+        KeyCode::VK_LOCK_FN,
+        KeyCode::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT, <!-- drop second key event -->
+      </autogen>
+    </item>
+
+    <item>
+      <name>Shift_L+Shift_R to CapsLock</name>
+      <appendix>(+ Shift_R to turn CapsLock off)</appendix>
+      <identifier>private.shiftLshiftR_to_capslock</identifier>
+      <block>
+        <modifier_only>ModifierFlag::CAPSLOCK</modifier_only>
+        <autogen>__KeyToKey__ KeyCode::SHIFT_R, KeyCode::CAPSLOCK, KeyCode::SHIFT_R</autogen>
+      </block>
+      <autogen>__KeyToKey__ KeyCode::SHIFT_R, ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
+    </item>
+
+    <item>
+      <name>Shift_L x2 to sticky Shift (with lock)</name>
+      <appendix></appendix>
+      <identifier>private.shiftL2_to_sticky_shift_lock</identifier>
+      <autogen>
+        __KeyToKey__
+        KeyCode::SHIFT_L,
+        KeyCode::SHIFT_L,
+        <!-- double-tap -->
+        Option::KEYTOKEY_DELAYED_ACTION,
+        KeyCode::VK_NONE,
+        Option::KEYTOKEY_DELAYED_ACTION_CANCELED_BY, KeyCode::SHIFT_L,
+        KeyCode::VK_LOCK_SHIFT_L,
+        KeyCode::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT, <!-- drop second key event -->
+      </autogen>
+    </item>
+
+  </item>
+</root>
