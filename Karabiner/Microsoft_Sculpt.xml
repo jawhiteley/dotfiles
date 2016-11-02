@@ -15,6 +15,8 @@
   <item>
     <name>* Microsoft Sculpt Ergo</name>
 
+    <!--================================================================-->
+    <!-- Basic modifier keys -->
     <item>
       <name>Sculpt swap Command and Option</name>
       <appendix>This swaps the default Command and Option keys to match a layout more familiar to Mac users.</appendix>
@@ -68,6 +70,8 @@
       </autogen>
     </item>
 
+    <!--================================================================-->
+    <!-- Function and Functional keys -->
     <item>
       <name>Sculpt Esc to Function-Lock</name>
       <identifier>sculpt.esc_to_fn_lock</identifier>
@@ -383,24 +387,16 @@
     -->
 
 
-    <!-- Mouse -->
-    <item>
-      <name>Remap Sculpt Windows button on mouse to Launchpad</name>
-      <appendix>This maps the Microsoft Sculpt's Windows button on the mouse to Launchpad.</appendix>
-      <identifier>sculpt.windows_to_launchpad</identifier>
-      <device_only>DeviceVendor::Microsoft, DeviceProduct::Sculpt</device_only>
-      <autogen>
-        __KeyToKey__
-        KeyCode::COMMAND_R,
-        KeyCode::LAUNCHPAD
-      </autogen>
-    </item>
-
+    <!--================================================================-->
     <!-- NumPad -->
     <modifierdef>NumLock</modifierdef>
     <modifierdef>#</modifierdef> <!-- shorter version of NumLock -->
     <modifierdef>NUM_MEDIA</modifierdef>
     <modifierdef>=</modifierdef> <!-- short for media controls: this is what appears in the notification -->
+    <vkopenurldef>
+      <name>KeyCode::VK_OPEN_URL_APP_ITUNES</name>
+      <url type="file">/Applications/iTunes.app</url>
+    </vkopenurldef>
 
     <item>
       <name>NumPad</name>
@@ -412,10 +408,11 @@
       <appendix>8/2 -> Volume +/-</appendix>
       <appendix>9/3 -> Brightness +/-</appendix>
       <appendix>0 -> Mute</appendix>
-      <appendix>-/+ -> Up/Down</appendix>
-      <appendix>* -> activate Remote Buddy Hotkey Remote</appendix>
-      <appendix>/ -> de-activate Remote Buddy Hotkey Remote</appendix>
-      <appendix>. -> Remote Buddy Menu (if HotKey Remote is active)</appendix>
+      <appendix>-/+ -> Up/Down arrows</appendix>
+      <appendix>* -> activate Remote Buddy Hotkey Remote mode</appendix>
+      <appendix>/ -> de-activate Remote Buddy Hotkey Remote mode</appendix>
+      <appendix>. -> Remote Buddy Menu (if HotKey Remote mode is active)</appendix>
+      <appendix>Hold . to open iTunes</appendix>
       <identifier>sculpt.numlock</identifier>
       <device_only>DeviceVendor::Microsoft, DeviceProduct::Sculpt</device_only>
 
@@ -452,9 +449,17 @@
         <block>
           <modifier_only>ModifierFlag::= | ModifierFlag::NONE</modifier_only>
           <autogen>
-            __KeyToKey__
+            __HoldingKeyToKey__
             KeyCode::KEYPAD_DOT,
-            KeyCode::VK_NONE
+            <!-- short press -->
+            @begin
+            KeyCode::VK_NONE,
+            @end
+            <!-- hold -->
+            @begin
+            KeyCode::VK_OPEN_URL_APP_ITUNES,
+            @end
+            Option::NOREPEAT,
           </autogen>
           <autogen>
             __KeyToKey__
@@ -537,8 +542,8 @@
           </autogen>
         </block>
 
-        <!-- Remote Buddy shortcuts: via the KEYPAD_DOT (period) key -->
-        <!-- These need to activate when other modifiers are active (like the locked ones they trigger) -->
+        <!-- Remote Buddy shortcuts -->
+        <!-- I want to move these to a separate item, but not sure how to handle the necessary switch keys if such an item were disabled (what would they do otherwise), and how to allow the Remote Buddy functions to override such mappings. -->
         <modifierdef>REMOTE</modifierdef>
         <modifierdef>REMOTE_HOTKEY</modifierdef>
         <modifierdef>REMOTE_MENU</modifierdef>
@@ -549,6 +554,7 @@
              -->
 
         <block>
+          <!-- These need to activate when other modifiers are active (like the locked ones they trigger) -->
           <autogen>
             __KeyToKey__
             KeyCode::KEYPAD_SLASH,
@@ -716,6 +722,21 @@
              -->
       </block>
 
+    </item>
+
+
+    <!--================================================================-->
+    <!-- Mouse -->
+    <item>
+      <name>Remap Sculpt Windows button on mouse to Launchpad</name>
+      <appendix>This maps the Microsoft Sculpt's Windows button on the mouse to Launchpad.</appendix>
+      <identifier>sculpt.windows_to_launchpad</identifier>
+      <device_only>DeviceVendor::Microsoft, DeviceProduct::Sculpt</device_only>
+      <autogen>
+        __KeyToKey__
+        KeyCode::COMMAND_R,
+        KeyCode::LAUNCHPAD
+      </autogen>
     </item>
 
   </item>
