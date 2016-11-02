@@ -73,9 +73,17 @@
       <identifier>sculpt.esc_to_fn_lock</identifier>
       <device_only>DeviceVendor::Microsoft, DeviceProduct::Sculpt</device_only>
       <autogen>
-        __KeyToKey__
+        __HoldingKeyToKey__
         KeyCode::ESCAPE,
+        <!-- short press -->
+        @begin
+        KeyCode::ESCAPE,
+        @end
+        <!-- hold -->
+        @begin
         KeyCode::VK_LOCK_FN,
+        @end
+        Option::NOREPEAT,
       </autogen>
     </item>
 
@@ -375,6 +383,7 @@
     -->
 
 
+    <!-- Mouse -->
     <item>
       <name>Remap Sculpt Windows button on mouse to Launchpad</name>
       <appendix>This maps the Microsoft Sculpt's Windows button on the mouse to Launchpad.</appendix>
@@ -385,6 +394,326 @@
         KeyCode::COMMAND_R,
         KeyCode::LAUNCHPAD
       </autogen>
+    </item>
+
+    <!-- NumPad -->
+    <modifierdef>NumLock</modifierdef>
+    <modifierdef>#</modifierdef> <!-- shorter version of NumLock -->
+    <modifierdef>NUM_MEDIA</modifierdef>
+    <modifierdef>=</modifierdef> <!-- short for media controls: this is what appears in the notification -->
+
+    <item>
+      <name>NumPad</name>
+      <appendix>Make the NumLock Key actually toggle a modifier lock.</appendix>
+      <appendix>NumLock maps NumPad keys to media control keys:</appendix>
+      <appendix>5 -> Play/Pause</appendix>
+      <appendix>4/6 -> Prev/Next (Hold to move forward/back within a track in iTunes)</appendix>
+      <appendix>7/1 -> move forward/back within a track in iTunes</appendix>
+      <appendix>8/2 -> Volume +/-</appendix>
+      <appendix>9/3 -> Brightness +/-</appendix>
+      <appendix>0 -> Mute</appendix>
+      <appendix>-/+ -> Up/Down</appendix>
+      <appendix>. -> activate Remote Buddy Hotkey Remote</appendix>
+      <identifier>sculpt.numlock</identifier>
+      <device_only>DeviceVendor::Microsoft, DeviceProduct::Sculpt</device_only>
+
+      <block>
+        <modifierlocked_only>ModifierFlag::REMOTE_MENU</modifierlocked_only>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEYPAD_CLEAR,
+          KeyCode::ENTER, ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L,
+          KeyCode::VK_LOCK_=,
+          KeyCode::VK_LOCK_REMOTE_FORCE_OFF,
+          KeyCode::VK_LOCK_REMOTE_HOTKEY_FORCE_OFF,
+          KeyCode::VK_LOCK_REMOTE_MENU_FORCE_OFF,
+        </autogen>
+      </block>
+
+      <autogen>
+        __KeyToKey__
+        KeyCode::KEYPAD_CLEAR,
+        KeyCode::VK_LOCK_=,
+        KeyCode::VK_LOCK_REMOTE_FORCE_OFF,
+        KeyCode::VK_LOCK_REMOTE_HOTKEY_FORCE_OFF,
+        KeyCode::VK_LOCK_REMOTE_MENU_FORCE_OFF,
+      </autogen>
+
+      <!-- To make the media keys the default (require NumLock to use numbers), use these conditions in the blocks below:
+        <modifier_not>ModifierFlag::NumLock</modifier_not>
+        <modifier_not>ModifierFlag::NumLock | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L</modifier_not>
+      -->
+
+      <block>
+        <modifier_only>ModifierFlag::=</modifier_only>
+
+        <block>
+          <modifier_only>ModifierFlag::= | ModifierFlag::NONE</modifier_only>
+          <autogen>
+            __KeyToKey__
+            KeyCode::KEYPAD_DOT,
+            KeyCode::VK_NONE
+          </autogen>
+          <autogen>
+            __KeyToKey__
+            KeyCode::KEYPAD_0,
+            KeyCode::VK_CONSUMERKEY_VOLUME_MUTE
+          </autogen>
+          <autogen>
+            __KeyToKey__
+            KeyCode::KEYPAD_1,
+            KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L,
+          </autogen>
+          <autogen>
+            __KeyToKey__
+            KeyCode::KEYPAD_2,
+            KeyCode::VK_CONSUMERKEY_VOLUME_DOWN
+          </autogen>
+          <autogen>
+            __KeyToKey__
+            KeyCode::KEYPAD_3,
+            KeyCode::VK_CONSUMERKEY_BRIGHTNESS_DOWN
+          </autogen>
+          <autogen>
+            __HoldingKeyToKey__
+            KeyCode::KEYPAD_4,
+            <!-- short press -->
+            @begin
+            KeyCode::VK_CONSUMERKEY_MUSIC_PREV,
+            @end
+            <!-- hold -->
+            @begin
+            KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L,
+            @end
+          </autogen>
+          <autogen>
+            __KeyToKey__
+            KeyCode::KEYPAD_5,
+            KeyCode::VK_CONSUMERKEY_MUSIC_PLAY
+          </autogen>
+          <autogen>
+            __HoldingKeyToKey__
+            KeyCode::KEYPAD_6,
+            <!-- short press -->
+            @begin
+            KeyCode::VK_CONSUMERKEY_MUSIC_NEXT,
+            @end
+            <!-- hold -->
+            @begin
+            KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L,
+            @end
+          </autogen>
+          <autogen>
+            __KeyToKey__
+            KeyCode::KEYPAD_7,
+            KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L,
+          </autogen>
+          <autogen>
+            __KeyToKey__
+            KeyCode::KEYPAD_8,
+            KeyCode::VK_CONSUMERKEY_VOLUME_UP
+          </autogen>
+          <autogen>
+            __KeyToKey__
+            KeyCode::KEYPAD_9,
+            KeyCode::VK_CONSUMERKEY_BRIGHTNESS_UP
+          </autogen>
+          <autogen>
+            __KeyToKey__
+            KeyCode::KEYPAD_MINUS,
+            KeyCode::CURSOR_UP    <!-- based on keyboard layout, not semantics -->
+          </autogen>
+          <autogen>
+            __KeyToKey__
+            KeyCode::KEYPAD_PLUS,
+            KeyCode::CURSOR_DOWN    <!-- based on keyboard layout, not semantics -->
+          </autogen>
+          <autogen>
+            __KeyToKey__
+            KeyCode::ENTER,
+            KeyCode::RETURN
+          </autogen>
+        </block>
+
+        <!-- Remote Buddy shortcuts: via the KEYPAD_DOT (period) key -->
+        <!-- These need to activate when other modifiers are active (like the locked ones they trigger) -->
+        <modifierdef>REMOTE</modifierdef>
+        <modifierdef>REMOTE_HOTKEY</modifierdef>
+        <modifierdef>REMOTE_MENU</modifierdef>
+
+        <!-- I was hoping to be able to automatically lock and unlock the REMOTE modifiers with the menu: 
+             This assumes that only these keys can activate / deactivate the menu, but there are other ways of doing either, which can lead to the REMOTE_MENU flag becoming out of sync with the actual menu state.
+             It is safer to only enable the menu when the remote modifier is active, which achieves the same overall effect.
+             -->
+
+        <block>
+          <autogen>
+            __KeyToKey__
+            KeyCode::KEYPAD_SLASH,
+            KeyCode::VK_LOCK_REMOTE_FORCE_OFF,
+          </autogen>
+          <autogen>
+            __KeyToKey__
+            KeyCode::KEYPAD_MULTIPLY,
+            KeyCode::VK_LOCK_REMOTE_FORCE_ON,
+          </autogen>
+        </block>
+
+        <block>
+          <modifier_only>ModifierFlag::= | ModifierFlag::REMOTE</modifier_only>
+          <autogen>
+            __HoldingKeyToKey__
+            KeyCode::KEYPAD_DOT,
+            <!-- short press -->
+            @begin
+            KeyCode::ENTER, ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L,
+            @end
+            <!-- hold -->
+            @begin
+            KeyCode::ENTER, ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L,
+            @end
+            Option::NOREPEAT,
+          </autogen>
+          <autogen>
+            __KeyToKey__
+            KeyCode::KEYPAD_0,
+            KeyCode::VK_NONE
+          </autogen>
+          <autogen>
+            __KeyToKey__
+            KeyCode::KEYPAD_1,
+            KeyCode::VK_NONE
+          </autogen>
+          <autogen>
+            __HoldingKeyToKey__
+            KeyCode::KEYPAD_2,
+            <!-- short press -->
+            @begin
+            KeyCode::KEYPAD_2, ModifierFlag::CONTROL_L, ModifierFlag::OPTION_L,
+            @end
+            <!-- hold -->
+            @begin
+            KeyCode::KEYPAD_2, ModifierFlag::CONTROL_L, ModifierFlag::OPTION_L,
+            @end
+            Option::NOREPEAT,
+          </autogen>
+          <autogen>
+            __KeyToKey__
+            KeyCode::KEYPAD_3,
+            KeyCode::VK_NONE
+          </autogen>
+          <autogen>
+            __HoldingKeyToKey__
+            KeyCode::KEYPAD_4,
+            <!-- short press -->
+            @begin
+            KeyCode::KEYPAD_4, ModifierFlag::CONTROL_L, ModifierFlag::OPTION_L,
+            @end
+            <!-- hold -->
+            @begin
+            KeyCode::KEYPAD_4, ModifierFlag::CONTROL_L, ModifierFlag::OPTION_L,
+            @end
+            Option::NOREPEAT,
+          </autogen>
+          <autogen>
+            __HoldingKeyToKey__
+            <!-- short press -->
+            KeyCode::KEYPAD_5,
+            @begin
+            KeyCode::KEYPAD_5, ModifierFlag::CONTROL_L, ModifierFlag::OPTION_L,
+            @end
+            <!-- hold -->
+            @begin
+            KeyCode::KEYPAD_5, ModifierFlag::CONTROL_L, ModifierFlag::OPTION_L,
+            @end
+            Option::NOREPEAT,
+          </autogen>
+          <autogen>
+            __HoldingKeyToKey__
+            <!-- short press -->
+            KeyCode::KEYPAD_6,
+            @begin
+            KeyCode::KEYPAD_6, ModifierFlag::CONTROL_L, ModifierFlag::OPTION_L,
+            @end
+            <!-- hold -->
+            @begin
+            KeyCode::KEYPAD_6, ModifierFlag::CONTROL_L, ModifierFlag::OPTION_L,
+            @end
+            Option::NOREPEAT,
+          </autogen>
+          <autogen>
+            __KeyToKey__
+            KeyCode::KEYPAD_7,
+            KeyCode::VK_NONE
+          </autogen>
+          <autogen>
+            __HoldingKeyToKey__
+            <!-- short press -->
+            KeyCode::KEYPAD_8,
+            @begin
+            KeyCode::KEYPAD_8, ModifierFlag::CONTROL_L, ModifierFlag::OPTION_L,
+            @end
+            <!-- hold -->
+            @begin
+            KeyCode::KEYPAD_8, ModifierFlag::CONTROL_L, ModifierFlag::OPTION_L,
+            @end
+            Option::NOREPEAT,
+          </autogen>
+          <autogen>
+            __KeyToKey__
+            KeyCode::KEYPAD_9,
+            KeyCode::VK_NONE
+          </autogen>
+          <autogen>
+            __HoldingKeyToKey__
+            KeyCode::KEYPAD_MINUS,
+            <!-- short press -->
+            @begin
+            KeyCode::KEYPAD_8, ModifierFlag::CONTROL_L, ModifierFlag::OPTION_L,
+            @end
+            <!-- hold -->
+            @begin
+            KeyCode::KEYPAD_8, ModifierFlag::CONTROL_L, ModifierFlag::OPTION_L,
+            @end
+            Option::NOREPEAT,
+          </autogen>
+          <autogen>
+            __HoldingKeyToKey__
+            KeyCode::KEYPAD_PLUS,
+            <!-- short press -->
+            @begin
+            KeyCode::KEYPAD_2, ModifierFlag::CONTROL_L, ModifierFlag::OPTION_L,
+            @end
+            <!-- hold -->
+            @begin
+            KeyCode::KEYPAD_2, ModifierFlag::CONTROL_L, ModifierFlag::OPTION_L,
+            @end
+            Option::NOREPEAT,
+          </autogen>
+          <autogen>
+            __HoldingKeyToKey__
+            KeyCode::ENTER,
+            <!-- short press -->
+            @begin
+            KeyCode::KEYPAD_5, ModifierFlag::CONTROL_L, ModifierFlag::OPTION_L,
+            @end
+            <!-- hold -->
+            @begin
+            KeyCode::KEYPAD_5, ModifierFlag::CONTROL_L, ModifierFlag::OPTION_L,
+            @end
+            Option::NOREPEAT,
+          </autogen>
+        </block>
+
+        <!-- These keys send the same keycodes as keys on the main keyboard.
+             I won't remap them here.
+             Clear = ESCAPE
+             [calculator]
+             Backspace = DELETE
+             Enter [actually, the key marked 'Enter' on the main keyboard sends RETURN]
+             -->
+      </block>
+
     </item>
 
   </item>
