@@ -413,7 +413,9 @@
       <appendix>9/3 -> Brightness +/-</appendix>
       <appendix>0 -> Mute</appendix>
       <appendix>-/+ -> Up/Down</appendix>
-      <appendix>. -> activate Remote Buddy Hotkey Remote</appendix>
+      <appendix>* -> activate Remote Buddy Hotkey Remote</appendix>
+      <appendix>/ -> de-activate Remote Buddy Hotkey Remote</appendix>
+      <appendix>. -> Remote Buddy Menu (if HotKey Remote is active)</appendix>
       <identifier>sculpt.numlock</identifier>
       <device_only>DeviceVendor::Microsoft, DeviceProduct::Sculpt</device_only>
 
