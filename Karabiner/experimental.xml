@@ -1,0 +1,36 @@
+<root>
+  <!-- Experimental: doesn't seem to work -->
+
+  <item>
+    <name>ForceNumLockOn</name>
+    <item>
+      <identifier>sculpt.forcenumlockon</identifier>
+      <name>Force turn NumLock on at Microsoft Sculpt.</name>
+      <appendix>(The jkl keys will be changed to 123 when numlock is on.)</appendix>
+      <autogen>
+        __ForceNumLockOn__
+        DeviceVendor::Microsoft,
+        DeviceProduct::Sculpt,
+      </autogen>
+    </item>
+    <item>
+      <identifier>sculpt.forcenumlockon_restore</identifier>
+      <name>Toggle NumLock.</name>
+      <autogen>
+        __KeyToKey__
+        KeyCode::KEYPAD_CLEAR,
+        KeyCode::VK_IOHIKEYBOARD_TOGGLE_NUMLOCK,
+      </autogen>
+    </item>
+    <item>
+      <identifier>sculpt.forcenumlockon_force_off</identifier>
+      <name>Force turn NumLock on at Microsoft Sculpt.</name>
+      <autogen>
+        __ForceNumLockOn__
+        DeviceVendor::Microsoft,
+        DeviceProduct::Sculpt,
+        Option::FORCENUMLOCKON_FORCE_OFF,
+      </autogen>
+    </item>
+  </item>
+</root>
