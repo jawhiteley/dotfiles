@@ -8,9 +8,12 @@
 
     <item>
       <name>CapsLock (via Seil) to Esc + Hyper</name>
+      <appendix>Hyper (Cmd-Opt-Ctrl-Shift)</appendix>
+      <appendix>+ Esc if pressed alone.</appendix>
       <appendix>CapLock is special: use Seil to remap it to F19.</appendix>
       <appendix>Other useful keycodes include: 112 (unused, see above); 10 (DANISH_DOLLAR).</appendix>
-      <identifier>private.capslock_to_esc_hyper</identifier>
+      <appendix>(This is the original method I found online, but an alternate approach is below).</appendix>
+      <identifier>private.capslock_to_hyper_esc</identifier>
       <!-- http://brettterpstra.com/2012/12/08/a-useful-caps-lock-key/ -->
       <autogen>
         __KeyOverlaidModifier__
@@ -25,7 +28,28 @@
     </item>
 
     <item>
-      <name>Double-tap Fn for Fn-lock</name>
+      <name>CapsLock (F19 via Seil) to Esc / Hyper</name>
+      <appendix>Esc when pressed and released alone,</appendix> 
+      <appendix>Hyper (Cmd-Opt-Ctrl-Shift) when pressed with another key.</appendix>
+      <identifier>private.capslock_to_esc_hyper</identifier>
+      <autogen>
+        __KeyDownUpToKey__
+        <!-- from -->
+        KeyCode::F19,
+        <!-- if pressed and released alone -->
+        @begin
+        KeyCode::ESCAPE,
+        @end
+        <!-- if interrupted -->
+        @begin
+        KeyCode::COMMAND_L,
+        ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L,
+        @end
+      </autogen>
+    </item>
+
+    <item>
+      <name>2x Fn to Fn-lock</name>
       <identifier>private.fn_fn_lock</identifier>
       <autogen>
         __KeyToKey__
@@ -52,7 +76,7 @@
     </item>
 
     <item>
-      <name>Shift_L x2 to sticky Shift (with lock)</name>
+      <name>2x Shift_L to sticky Shift (with lock)</name>
       <appendix></appendix>
       <identifier>private.shiftL2_to_sticky_shift_lock</identifier>
       <autogen>
