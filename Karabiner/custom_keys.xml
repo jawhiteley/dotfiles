@@ -3,8 +3,52 @@
   <!-- Define keycode shortcut for keycode 112 (unused). Fn (keycode 63) does not work directly -->
   <symbol_map type="KeyCode" name="MY_CAPSLOCK" value="0x70" />
 
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_SHELL_lock_screen</name>
+    <!-- based on: http://apple.stackexchange.com/a/123738/72534 -->
+    <url type="shell">
+      # /Applications/Utilities/Keychain\ Access.app/Contents/Resources/Keychain.menu/Contents/MacOS/Keychain
+      ~/.dotfiles/Karabiner/lockscreen
+    </url>
+  </vkopenurldef>
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_SHELL_JXA_lock_screen</name>
+    <url type="shell">
+      osascript -e '
+        tell application "System Events" to tell process "SystemUIServer"
+          tell (menu bar item 1 of menu bar 1 where description is "Keychain menu extra")
+            click
+            click menu item "Lock Screen" of menu 1
+          end tell
+        end tell
+      '
+    </url>
+  </vkopenurldef>
+
   <item>
     <name>* JAW custom bindings for all keyboards</name>
+
+    <item>
+      <name>CapsLock (F19 via Seil) to Esc / Hyper</name>
+      <appendix>Esc when pressed and released alone,</appendix> 
+      <appendix>Hyper (Cmd-Opt-Ctrl-Shift) when pressed with another key.</appendix>
+      <identifier>private.capslock_to_esc_hyper</identifier>
+      <autogen>
+        __KeyDownUpToKey__
+        <!-- from -->
+        KeyCode::F19,
+        <!-- if pressed and released alone -->
+        @begin
+        KeyCode::ESCAPE,
+        @end
+        <!-- if interrupted -->
+        @begin
+        KeyCode::COMMAND_L,
+        ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L,
+        @end
+      </autogen>
+    </item>
 
     <item>
       <name>CapsLock (via Seil) to Esc + Hyper</name>
@@ -28,23 +72,39 @@
     </item>
 
     <item>
-      <name>CapsLock (F19 via Seil) to Esc / Hyper</name>
-      <appendix>Esc when pressed and released alone,</appendix> 
-      <appendix>Hyper (Cmd-Opt-Ctrl-Shift) when pressed with another key.</appendix>
-      <identifier>private.capslock_to_esc_hyper</identifier>
+      <!-- This is only really needed for non-Apple keyboards  -->
+      <name>F15 (Pause) -> Power</name>
+      <appendix>(on non-Apple keyboards).</appendix>
+      <identifier>private.f15_power</identifier>
+      <device_not>DeviceVendor::APPLE_COMPUTER, DeviceProduct::ANY</device_not>
       <autogen>
-        __KeyDownUpToKey__
-        <!-- from -->
-        KeyCode::F19,
-        <!-- if pressed and released alone -->
-        @begin
-        KeyCode::ESCAPE,
-        @end
-        <!-- if interrupted -->
-        @begin
-        KeyCode::COMMAND_L,
-        ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L,
-        @end
+        __KeyToKey__
+        KeyCode::F15,
+        KeyCode::VK_CONSUMERKEY_POWER,
+      </autogen>
+    </item>
+
+    <item>
+      <name>Ctrl-F14 (ScrLk) -> Lock Screen (binary executable)</name>
+      <appendix>This activates the command directly and does *not* require the keychain status menu to be enabled.</appendix> 
+      <appendix>It does require the binary executable file `lockscreen` to be in `~/.dotfiles/Karabiner/`</appendix> 
+      <identifier>private.f14_lock_screen</identifier>
+      <autogen>
+        __KeyToKey__
+        KeyCode::F14, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+        KeyCode::VK_OPEN_URL_SHELL_lock_screen,
+      </autogen>
+    </item>
+
+    <item>
+      <name>Ctrl-F14 (ScrLk) -> Lock Screen (AppleScript)</name>
+      <appendix>This only works if you have the keychain status menu enabled.</appendix> 
+      <appendix>Open Keychain Access; go to Preferences; enable "Show keychain status in menu bar".</appendix> 
+      <identifier>private.f14_lock_screen_jxa</identifier>
+      <autogen>
+        __KeyToKey__
+        KeyCode::F14, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+        KeyCode::VK_OPEN_URL_SHELL_JXA_lock_screen,
       </autogen>
     </item>
 
