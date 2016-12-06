@@ -10,12 +10,12 @@ q <- function (save="no", ...) {
   quit(save=save, ...)
 }
 
-### For vim-R plugin
+### For vim-R plugin; now Nvim-R, which uses it's own built-in nvimcom
 ## http://www.lepem.ufc.br/jaa/r-plugin.html#r-plugin-installation
-if(interactive())
-{
-  options(vimcom.verbose = 1)
-  require(vimcom)     # only load required package if installed
+if(interactive()) {
+  if (require(vimcom)) {
+    options(vimcom.verbose = 1)
+  }
 }
 
 

@@ -1,0 +1,10 @@
+source('~\\.dotfiles\\R\\Rprofile-dot')
+
+###=============================================================
+### System-specific settings
+
+## Add Rtools to PATH within R
+## (for Nvim-R to build & install nvimcom)
+# Sys.setenv(PATH=paste0("C:\\Users\\jwhiteley\\AppData\\Local\\Programs\\Rtools\\bin;\nC:\\Users\\jwhiteley\\AppData\\Local\\Programs\\Rtools\\gcc-4.6.3\\bin;", Sys.getenv('PATH')))
+
+message("**** Loaded local .Rprofile for Jonathan Whiteley ****")

@@ -6,7 +6,7 @@
 " Get common personal settings
 
 " Location of common files (absolute path on this system)
-let $DOTVIM   = $USERPROFILE . '\Documents\--JAW config files\dotfiles\Vim'
+let $DOTVIM   = $USERPROFILE . '\Documents\.dotfiles\Vim'
 let $DOTVIMRC = $DOTVIM . '\vimrc-dot' " works better if slash is platform-specific (backslash on Windows).
 " so I can just :e $DOTVIMRC
 
@@ -26,7 +26,7 @@ if has('gui_running')
 endif
 
 " vim-r-plugin on Windows
-" where it should be:
-let vimrplugin_r_path = 'C:\\Users\\jwhitele\\AppData\\Local\\Programs\\R\\R-3.2.2\\bin\\i386'
-" where it is:
-let vimrplugin_r_path = 'C:\\Users\\jwhitele\\Documents\\R\\R-3.2.2\\bin\\i386'
+let vimrplugin_r_path = 'C:\\Users\\jwhiteley\\AppData\\Local\\Programs\\R\\R-3.3.2\\bin\\i386'
+" now Nvim-R, with new settings.
+let R_path = 'C:\\Users\\jwhiteley\\AppData\\Local\\Programs\\R\\R-3.3.2\\bin\\i386'
+
