@@ -139,6 +139,7 @@
       <name>2x Shift_L to sticky Shift (with lock)</name>
       <appendix></appendix>
       <identifier>private.shiftL2_to_sticky_shift_lock</identifier>
+      <!--not in Steam; Ctrl+Shift?-->
       <autogen>
         __KeyToKey__
         KeyCode::SHIFT_L,

@@ -108,8 +108,9 @@
       <item>
         <name>Correct Right Alt [from F13]</name>
         <identifier>steam_controller.change_f13_to_alt_right</identifier>
+        <!-- changed OPTION_R to COMMAND_L to allow a way to map a COMMAND key -->
         <device_only>DeviceVendor::Valve, DeviceProduct::Steam_controller_keys</device_only>
-        <autogen>__KeyToKey__ KeyCode::F13, KeyCode::OPTION_R</autogen>
+        <autogen>__KeyToKey__ KeyCode::F13, KeyCode::COMMAND_L</autogen>
       </item>
 
       <item>
@@ -131,7 +132,7 @@
           <name>Correct Left Command (Windows Key) [from Power Key]</name>
           <identifier>steam_controller.change_power_to_left_command</identifier>
           <device_only>DeviceVendor::Valve, DeviceProduct::ANY</device_only>
-          <autogen>__KeyToKey__ ConsumerKeyCode::POWER, KeyCode::SPACE</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::POWER, KeyCode::COMMAND_L</autogen>
         </item>
       </item>
     </item>
