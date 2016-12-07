@@ -10,6 +10,12 @@ behave mswin
 " On windows, the vim directory is `~/vimfiles` instead of `~/.vim`
 " Set this as a variable to use in main vimrc?
 
+" directory settings - to avoid file clutter from backup files
+set backupdir=C:\Users\jwhiteley\AppData\Local\Temp
+set backupskip=C:\Users\jwhiteley\AppData\Local\Temp
+set directory=C:\Users\jwhiteley\AppData\Local\Temp
+set undodir=C:\Users\jwhiteley\AppData\Local\Temp
+
 " Windows function (from default vimrc, but I don't want the other stuff in there).
 set diffexpr=MyDiff()
 function MyDiff()

@@ -59,7 +59,8 @@ if v:version >= 700     " try only works in vim 7 or later
 
     " Vim + R : order matters
     Plug 'jalvesaq/R-Vim-runtime'
-    Plug 'Vim-R-plugin'
+    "Plug 'Vim-R-plugin'    " deprecated
+    Plug 'jalvesaq/Nvim-R'
 
     " Markdown preview? [check path]
     " Plug 'vim-scripts/markdown-preview.vim'
@@ -181,7 +182,7 @@ noremap <leader>p :Mm<CR>
 
 
 " ================================================================
-" Additional settings for Vim-R-plugin
+" Additional settings for Vim-R-plugin (replaced by Nvim-R)
 let vimrplugin_i386 = 1         "use 32-bit version of R (a little faster)
 let vimrplugin_r_args = "--sdi --no-save"
 let r_indent_ess_comments = 1   "indent R comments like in ESS.
@@ -191,6 +192,10 @@ let vimrplugin_assign = 2       "use two underscores to insert assignment operat
 "let vimrplugin_assign_map = '--' "what to convert into ' <- '; not working?
 " .vim/ftplugin/r_jaw.vim contains custom key maps for the assignment operator
 " in R files.
+
+" Nvim-R settings
+"let R_assign_map = "<M-->"
+let R_assign = 2    "2 underscores will insert assignment operator
 
 " vim-R-plugin custom key bindings 
 " also see .vim/ftplugin/r_jaw.vim
