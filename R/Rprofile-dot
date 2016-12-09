@@ -13,7 +13,7 @@ q <- function (save="no", ...) {
 ### For vim-R plugin; now Nvim-R, which uses it's own built-in nvimcom
 ## http://www.lepem.ufc.br/jaa/r-plugin.html#r-plugin-installation
 if(interactive()) {
-  if (require(vimcom)) {
+  if (suppressWarnings(require(vimcom, quietly=TRUE))) {
     options(vimcom.verbose = 1)
   }
 }
