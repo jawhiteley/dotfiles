@@ -429,7 +429,7 @@
             __KeyToKey__
             KeyCode::KEYPAD_CLEAR,
             KeyCode::ENTER, ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L,
-            KeyCode::VK_LOCK_=,
+            KeyCode::VK_LOCK_#,
             KeyCode::VK_LOCK_REMOTE_FORCE_OFF,
             KeyCode::VK_LOCK_REMOTE_HOTKEY_FORCE_OFF,
             KeyCode::VK_LOCK_REMOTE_MENU_FORCE_OFF,
@@ -439,22 +439,35 @@
         <autogen>
           __KeyToKey__
           KeyCode::KEYPAD_CLEAR,
-          KeyCode::VK_LOCK_=,
+          KeyCode::VK_LOCK_#,
           KeyCode::VK_LOCK_REMOTE_FORCE_OFF,
           KeyCode::VK_LOCK_REMOTE_HOTKEY_FORCE_OFF,
           KeyCode::VK_LOCK_REMOTE_MENU_FORCE_OFF,
         </autogen>
 
         <!-- To make the media keys the default (require NumLock to use numbers), use these conditions in the blocks below:
-        <modifier_not>ModifierFlag::NumLock</modifier_not>
-        <modifier_not>ModifierFlag::NumLock | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L</modifier_not>
+        <modifier_not>ModifierFlag::#</modifier_not>
+          <modifier_not>ModifierFlag::# | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L</modifier_not>
+          <modifier_not>ModifierFlag::#</modifier_not>
+        and this in the <autogen> blocks above:
+            KeyCode::VK_LOCK_#,
+      > Still needs some tweaking to get NumPad keys to work with modifiers as expected, even with "NumLock" off.
+      -->
+
+        <!-- To make the number keys the default (require NumLock to use media controls), use these conditions in the blocks below:
+        <modifier_only>ModifierFlag::=</modifier_only>
+          <modifier_only>ModifierFlag::= | ModifierFlag::NONE</modifier_only>
+          <modifier_only>ModifierFlag::= | ModifierFlag::REMOTE</modifier_only>
+        and this in the <autogen> blocks above:
+            KeyCode::VK_LOCK_=,
       -->
 
       <block>
-        <modifier_only>ModifierFlag::=</modifier_only>
+        <modifier_not>ModifierFlag::#</modifier_not>
 
         <block>
-          <modifier_only>ModifierFlag::= | ModifierFlag::NONE</modifier_only>
+          <modifier_not>ModifierFlag::# | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L</modifier_not>
+
           <autogen>
             __HoldingKeyToKey__
             KeyCode::KEYPAD_DOT,
@@ -575,7 +588,9 @@
         </block>
 
         <block>
-          <modifier_only>ModifierFlag::= | ModifierFlag::REMOTE</modifier_only>
+          <modifier_not>ModifierFlag::#</modifier_not>
+
+
           <autogen>
             __HoldingKeyToKey__
             KeyCode::KEYPAD_DOT,
