@@ -48,25 +48,32 @@ if v:version >= 700     " try only works in vim 7 or later
 
     " sensible default settings; I already use many of these here.
     Plug 'tpope/vim-sensible'
-    " Automatic text alignment
-    Plug 'Align'
+    " Solarized colour scheme --- http://ethanschoonover.com/solarized
+    Plug 'altercation/vim-colors-solarized'
+    " Automatic text alignment ('Align.vba' no longer seems to be maintained)
+    Plug 'junegunn/vim-easy-align'
     " Manage 'surroundings': quotes, parentheses, XML tags, etc.
-    Plug 'surround.vim'
-    " matchit: extended % matching for HTML, LaTeX, and many other languages
-    Plug 'matchit.zip'
+    Plug 'tpope/vim-surround'
+    " matchit: extended % matching for HTML, LaTeX, and many other languages 
+    " (vim-scripts.org is no longer supported: newer version somewhere else?)
+    Plug 'vim-scripts/matchit.zip'
+
     " SnipMate: TextMate-style snippets for Vim
-    Plug 'snipMate'
+    " depends on vim-addon-mw-utils and tlib
+    Plug 'MarcWeber/vim-addon-mw-utils'
+    Plug 'tomtom/tlib_vim'
+    Plug 'garbas/vim-snipmate'
+    " A collection of snippets for SnipMate
+    " CONFLICTS with Nvim-R (Nvim-R key maps don't work and the list of key maps goes wonky)
+    "Plugin 'honza/vim-snippets'
 
     " Vim + R : order matters
     Plug 'jalvesaq/R-Vim-runtime'
     "Plug 'Vim-R-plugin'    " deprecated
     Plug 'jalvesaq/Nvim-R'
 
-    " Markdown preview? [check path]
-    " Plug 'vim-scripts/markdown-preview.vim'
-
-    " Solarized colour scheme --- http://ethanschoonover.com/solarized
-    Plug 'altercation/vim-colors-solarized'
+    " Markdown preview?  'suan/vim-instant-markdown' ; 'iamcco/markdown-preview.vim' ; 'JamshedVesuna/vim-markdown-preview'
+    Plug 'suan/vim-instant-markdown'
 
     " Add plugins to &runtimepath
     call plug#end()
@@ -175,8 +182,15 @@ if has('gui_running')
   " [this triggers E73 error in terminal vim on mac: silent! does not help]
   silent! noremap <C-[> <C-T>
 endif
-" Vim MarkDown Preview
-noremap <leader>p :Mm<CR>
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+"xmap <leader>a <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+"nmap <leader>a <Plug>(EasyAlign)
+
+" Vim MarkDown Preview?
+"noremap <leader>p :Mm<CR>
 " conflicts with Vim-R plugin: map <D-CR> :Mm<CR>
 
 
