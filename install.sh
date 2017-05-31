@@ -4,7 +4,7 @@
 # bash install.sh
 
 ### PARAMETERS
-### A lot of this is based on https://github.com/dotphiles/dotsync/
+### Based loosely on https://github.com/dotphiles/dotsync/
 ## Install Location
 if [[ -z "$DOTFILES" ]]; then
   DOTFILES=".dotfiles"
@@ -29,21 +29,12 @@ checkdirs()
   if [[ ! -e $BACKUPDIR ]]; then
     mkdir -p $BACKUPDIR
   fi
-  # if [[ ! -d $DOTFILEDIR ]]; then
-    # Check that $DIR and $DOTFILEDIR are not the same:
-    #   If they are, no need to symlink! [UNTESTED]
-    #if [[ "$DIR" != "$DOTFILEDIR" ]]
-    # Put a symbolic link to dotfiles directory at the desired Install Location
-    echo -e "*** Symlinking dotfiles directory: ***\n    $DIR\n    -> $DOTFILEDIR"
-    # adding -v option to ln can also generate similar output:  target -> source
-    symlink "$DIR" "$DOTFILEDIR"
-    #fi
-  # fi
 }
 
 symlink ()
 {
   if [[ -e "$2" ]] && [[ ! -h "$2" ]]; then
+    checkdirs
     BACKUP="$BACKUPDIR/$(basename "$2")"
     echo "*** $2 already exists, backing up in $BACKUP ***"
     cp -r "$2" "$BACKUP"
@@ -64,6 +55,25 @@ symlink ()
   fi
 }
 
+link_dotfiles ()
+{
+  # Check that $DIR and $DOTFILEDIR are not the same:
+  #   If they are, no need to symlink! [UNTESTED]
+  if [[ "$DIR" != "$DOTFILEDIR" ]]; then
+    # Put a symbolic link to dotfiles directory at the desired Install Location
+    echo -e "*** Symlinking dotfiles directory: ***\n    $DIR\n    -> $DOTFILEDIR"
+    # adding -v option to ln can also generate similar output:  target -> source
+    symlink "$DIR" "$DOTFILEDIR"
+  fi
+}
 
 ### MAIN
-checkdirs
+## symlink this directory to home folder
+link_dotfiles
+
+## sync dotfiles
+#./dotfiles/dotsync/bin/dotsync -L
+
+## Install vim plugin manager
+#curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+#    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
