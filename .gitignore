@@ -1,2 +1,3 @@
 **/_private
-/Vim/**/Plugins/**/	# subfolders within vim Plugins directory - these are git repos managed by a vim plugin manager
+# subfolders within vim Plugins directory - these are git repos managed by a vim plugin manager
+/**/vim/Plugins/**/
