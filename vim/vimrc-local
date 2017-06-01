@@ -1,17 +1,23 @@
-" Jonathan Whiteley     2015-12-14
+" Jonathan Whiteley     2015-12-11
 " ================================================================
+" On Mac or unix, put this into the usual .vimrc file for your user account.
 " On Windows, I usually put this file right into /vimfiles (the 2nd place Windows looks for a vimrc file).
+
+" Troubleshooting:
+" Ensure the fileformat matches what the system expects. e.g., :set ff=unix
 
 " ================================================================
 " Get common personal settings
 
 " Location of common files (absolute path on this system)
-let $DOTVIM   = $USERPROFILE . '\Documents\.dotfiles\Vim'
-let $DOTVIMRC = $DOTVIM . '\vimrc-dot' " works better if slash is platform-specific (backslash on Windows).
+let $DOTVIM   = '~/.dotfiles/vim'
+let $DOTVIMRC  = $DOTVIM . '/vimrc' " works better if slash is platform-specific (backslash on Windows).
 " so I can just :e $DOTVIMRC
+" fnameescape() is recommended to make paths syntactically correct, 
+" but this also seems to produce a string that makes :e $DOTVIMRC not work. :/
+let g:vim_common   = fnameescape( $DOTVIM )
+let g:vimrc_common = fnameescape( $DOTVIMRC )
 
-" Folder in which this script resides: (not safe for symlinks)
-let g:vimf_path = resolve( expand('<sfile>:p:h') )
 " Run common personal commands
 " execute 'source ' . g:vimrc_common
 source $DOTVIMRC
@@ -25,8 +31,9 @@ if has('gui_running')
   set lsp=2                " Line-spacing: # pixels between lines
 endif
 
-" vim-r-plugin on Windows
-let vimrplugin_r_path = 'C:\\Users\\jwhiteley\\AppData\\Local\\Programs\\R\\R-3.3.2\\bin\\i386'
-" now Nvim-R, with new settings.
-let R_path = 'C:\\Users\\jwhiteley\\AppData\\Local\\Programs\\R\\R-3.3.2\\bin\\i386'
+" Fullscreen options for MacVim
+if has('gui_macvim')
+  set fuoptions=maxvert,maxhorz
+  set lines=64 columns=96
+endif
 

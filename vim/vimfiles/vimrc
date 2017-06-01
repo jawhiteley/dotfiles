@@ -1,0 +1,30 @@
+" Jonathan Whiteley     2015-12-14
+" ================================================================
+" On Windows, I usually put this file right into /vimfiles (the 2nd place Windows looks for a vimrc file).
+" i.e., copy this `vim` folder to `vimfiles` in the user $HOME directory on Windows.
+
+" ================================================================
+" Get common personal settings
+
+" Location of common files (absolute path on this system)
+let $DOTVIM   = $USERPROFILE . '\Documents\.dotfiles\vim'
+let $DOTVIMRC = $DOTVIM . '\vimrc' " works better if slash is platform-specific (backslash on Windows).
+" so I can just :e $DOTVIMRC
+
+" Run common personal commands
+source $DOTVIMRC
+
+
+" ================================================================
+" System-specific local settings and runtime commands
+
+if has('gui_running')
+  set guifont=Consolas:h10 " set font face and size
+  set lsp=2                " Line-spacing: # pixels between lines
+endif
+
+" vim-r-plugin on Windows
+let vimrplugin_r_path = 'C:\\Users\\jwhiteley\\AppData\\Local\\Programs\\R\\R-3.3.2\\bin\\i386'
+" now Nvim-R, with new settings.
+let R_path = 'C:\\Users\\jwhiteley\\AppData\\Local\\Programs\\R\\R-3.3.2\\bin\\i386'
+

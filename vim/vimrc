@@ -9,12 +9,13 @@ set nocompatible
 " this one.
 " Folder in which this script resides: (not safe for symlinks)
 let s:path = resolve( expand('<sfile>:p:h') )
+let g:vimf_path = '~/.vim'
 
 " ================================================================
 " Load platform-specific settings
 if has('macunix')
   " do stuff for Mac
-  let g:vimf_path .= '/.vim'
+  " let g:vimf_path = '~/.vim'
   " Fullscreen options 
   if has('gui_macvim')
     set fuoptions=maxvert,maxhorz
@@ -22,10 +23,10 @@ if has('macunix')
   endif
 elseif has('unix')
   " do stuff for Unix
-  let g:vimf_path .= '/.vim'
+  " let g:vimf_path = '~/.vim'
 elseif has('win32') || has ('win64')
   " do stuff for Windows
-  "let g:vimf_path .= '/vimfiles'   " I usually keep my vimrc file *inside* /vimfiles on Windows
+  let g:vimf_path = s:path . '/vimfiles'   " I usually keep my vimrc file *inside* /vimfiles on Windows
   source <sfile>:h/mswin.vim
 endif
 
@@ -69,8 +70,8 @@ if v:version >= 700     " try only works in vim 7 or later
 
     " Vim + R : order matters
     Plug 'jalvesaq/R-Vim-runtime'
-    "Plug 'Vim-R-plugin'    " deprecated
     Plug 'jalvesaq/Nvim-R'
+    "Plug 'Vim-R-plugin'    " deprecated
 
     " Markdown preview?  'suan/vim-instant-markdown' ; 'iamcco/markdown-preview.vim' ; 'JamshedVesuna/vim-markdown-preview'
     Plug 'suan/vim-instant-markdown'
