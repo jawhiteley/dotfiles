@@ -51,6 +51,8 @@ if v:version >= 700     " try only works in vim 7 or later
     Plug 'tpope/vim-sensible'
     " Solarized colour scheme --- http://ethanschoonover.com/solarized
     Plug 'altercation/vim-colors-solarized'
+    " Zenburn colour scheme --- http://kippura.org/zenburnpage/
+    Plug 'jnurmine/Zenburn'
     " Automatic text alignment ('Align.vba' no longer seems to be maintained)
     Plug 'junegunn/vim-easy-align'
     " Manage 'surroundings': quotes, parentheses, XML tags, etc.
