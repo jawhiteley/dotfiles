@@ -55,7 +55,7 @@ symlink ()
   fi
 }
 
-link_dotfiles ()
+link_dotfiles_dir ()
 {
   # Check that $DIR and $DOTFILEDIR are not the same:
   #   If they are, no need to symlink! [UNTESTED]
@@ -69,10 +69,10 @@ link_dotfiles ()
 
 ### MAIN
 ## symlink this directory to home folder
-link_dotfiles
+link_dotfiles_dir
 
 ## sync dotfiles
-#./dotfiles/dotsync/bin/dotsync -L
+#~/.dotfiles/dotsync/bin/dotsync -L
 
 ## Install vim plugin manager
 #curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
