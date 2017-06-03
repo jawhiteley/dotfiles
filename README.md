@@ -36,7 +36,15 @@ Because I find there are almost always system-specific settings --- like font si
 I do not want to sync these across systems, but I do want common settings to be easily accessible and automatically updated across systems.
 This way, I can keep all my common dotfiles in one place, managed in a repository, while also allowing for system-specific settings.
 
-[dotsync] now allows machine-specific settings (on macOS). 
+# dotsync
+
+I like how [dotsync] makes it easy to symlink many files, allows fine control over what goes where (with the dotsyncrc file) and allows machine-specific settings. But, I did not like having to add each machine hostname to dotsyncrc for it to recognize the current host as valid. I forked the project, and made some minor tweaks to allow it to recognize any local system as 'valid' **if** a special placeholder is added to the .dotsyncrc file. In theory, this should not interfere with other dotsync tasks, and requires some action by the user to allow this override behaviour.
+
+I have currently linked my forked version (and a special branch with my modifications named 'jaw') as a submodule within the dotfiles repo.
+
+I found that the default installation instructions for [dotsync][] don't always work if your user does not have a public key registered with github.com, which is going to be common on a new machine: plus, Github Desktop (on Mac) frequently failed to clone the repo with the submodule remote url set to the 'private' `git@igthub.com:dotphiles/dotsync.git` format. I have had fewer issues with the remote url pointing to the 'public' url (`https://github.com/dotphiles/dotsync.git` --- or, in my case, `https://github.com/jawhiteley/dotsync.git`).
+
+
 
 # Reference
 
@@ -47,7 +55,13 @@ This way, I can keep all my common dotfiles in one place, managed in a repositor
 * [dotphiles](https://github.com/dotphiles/dotphiles)
   * [dotsync](https://github.com/dotphiles/dotsync)
 
+* [submodule-branch](https://stackoverflow.com/questions/1777854/git-submodules-specify-a-branch-tag)
+
 # More Reading
 
 * [GitHub does dotfiles](https://dotfiles.github.io)
+
+
+
+[dotsync]: https://github.com/dotphiles/dotsync
 

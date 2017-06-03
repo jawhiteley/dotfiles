@@ -38,5 +38,6 @@ vim/vimrc
 
 ## hostname                     type=masterhost, ANY or NONE    files=dotfile:tolink,another:tolink
 [hosts]
+.local              git=NONE
 [endhosts]
 

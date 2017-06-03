@@ -1,9 +1,9 @@
 Jonathan Whiteley
-2017-06-01
+2017-06-03
 
 + add dotsync submodule to repo.
     - edit install.sh script to automatically run dotsync commands
-    - modify dotsync to accept any host as valid, if default listed in dotsyncrc (host "[DEFAULT]") - and use those settings for any other host not listed.
+    + modify dotsync to accept any host as valid, if default listed in dotsyncrc (host "[DEFAULT]") - and use those settings for any other host not listed.
 
 * add system setup / bootstrap / config scripts (brew, osx.sh)
 
