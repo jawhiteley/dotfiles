@@ -72,8 +72,8 @@ link_dotfiles_dir ()
 link_dotfiles_dir
 
 ## sync dotfiles
-#~/.dotfiles/dotsync/bin/dotsync -L
+~/.dotfiles/dotsync/bin/dotsync -L
 
 ## Install vim plugin manager
-#curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-#    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
