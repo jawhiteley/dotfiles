@@ -1,3 +1,11 @@
+## Sytem files
+.DS_Store
+
+## Private folder: do not track or sync
 **/_private
-# subfolders within vim Plugins directory - these are git repos managed by a vim plugin manager
-/**/vimfiles/Plugins/**/
+
+## vim
+.*.swp
+# subfolders within vim directory - Plugins are git repos managed by a vim plugin manager
+/vim/vimfiles/Plugins/**
+/vim/backup/*
