@@ -9,3 +9,6 @@
 # subfolders within vim directory - Plugins are git repos managed by a vim plugin manager
 /vim/vimfiles/Plugins/**
 /vim/backup/*
+
+## local dotfiles (used by dotsync)
+**/localhost
