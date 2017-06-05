@@ -1,5 +1,5 @@
 Jonathan Whiteley
-2017-05-31
+2017-06-04
 
 Personal common configuration files ("dotfiles") that I use across multiple systems and platforms.
 
