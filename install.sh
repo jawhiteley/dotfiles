@@ -71,6 +71,10 @@ link_dotfiles_dir ()
 ## symlink this directory to home folder
 link_dotfiles_dir
 
+## symlink the 'Application Support' folder without a space, so I can offer a valid path in dotsyncrc
+## dotsync interprets any space in a destination path - even if escaped - as a delineator for a separate destination for the same dotfile.
+symlink "$HOME/Library/Application Support/" "$HOME/.ApplicationSupport" 
+
 ## sync dotfiles
 ~/.dotfiles/dotsync/bin/dotsync -L
 

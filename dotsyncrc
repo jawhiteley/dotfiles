@@ -34,6 +34,7 @@ bash/bash_profile
 vim/vimfiles:.vim
 vim/vimrc
 #vim/gvimrc
+Karabiner/private.xml:.ApplicationSupport/Karabiner/private.xml
 [endfiles]
 
 ## hostname                     type=masterhost, ANY or NONE    files=dotfile:tolink,another:tolink
