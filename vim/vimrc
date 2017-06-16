@@ -187,10 +187,10 @@ if has('gui_running')
 endif
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
-"xmap <leader>a <Plug>(EasyAlign)
+xmap <leader>a <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
-"nmap <leader>a <Plug>(EasyAlign)
+nmap <leader>a <Plug>(EasyAlign)
 
 " Vim MarkDown Preview?
 "noremap <leader>p :Mm<CR>
