@@ -8,3 +8,10 @@ export PATH="$PATH:~/bin/bibtexformat"
 # The orginal version is saved in .bash_profile.pysave
 PATH="/Library/Frameworks/Python.framework/Versions/3.2/bin:${PATH}"
 export PATH
+
+## Aliases
+# show/hide hidden files in macOS / OS X
+# http://ianlunn.co.uk/articles/quickly-showhide-hidden-files-mac-os-x-mavericks/
+alias showFiles='defaults write com.apple.finder AppleShowAllFiles -bool true; killall Finder /System/Library/CoreServices/Finder.app'
+alias hideFiles='defaults write com.apple.finder AppleShowAllFiles -bool false; killall Finder /System/Library/CoreServices/Finder.app'
+
