@@ -5,6 +5,15 @@ source('~\\.dotfiles\\R\\Rprofile-dot')
 
 ## Add Rtools to PATH within R
 ## (for Nvim-R to build & install nvimcom)
-# Sys.setenv(PATH=paste0("C:\\Users\\jwhiteley\\AppData\\Local\\Programs\\Rtools\\bin;\nC:\\Users\\jwhiteley\\AppData\\Local\\Programs\\Rtools\\gcc-4.6.3\\bin;", Sys.getenv('PATH')))
+#Sys.setenv(PATH=paste("C:\\Rtools\\bin;", 
+                      ##"C:\\Rtools\\mingw_32\bin;",    # Rtools 3.4
+                      #"C:\\Rtools\\gcc-4.6.3\\bin;",    # Rtools 3.3
+                      ##"C:\\Users\\jwhiteley\\AppData\\Local\\Programs\\Rtools\\bin;",
+                      ##"C:\\Users\\jwhiteley\\AppData\\Local\\Programs\\Rtools\\gcc-4.6.3\\bin;", 
+                      #Sys.getenv('PATH'), sep="\n"))
+
+## Store libraries on the local drive:
+##.libPaths(c("C:/R_packages/", .libPaths()))
+
 
 message("**** Loaded local .Rprofile for Jonathan Whiteley ****")
