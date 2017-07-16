@@ -224,6 +224,10 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bo
 # Set the timezone; see `sudo systemsetup -listtimezones` for other values
 #sudo systemsetup -settimezone "Toronto" > /dev/null
 
+# Use Fn keys as standard keys (not media keys). Requires reboot.
+# https://apple.stackexchange.com/questions/59178/toggle-use-all-f1-f2-as-standard-keys-via-script
+defaults write -g com.apple.keyboard.fnState -bool true
+
 # Stop iTunes from responding to the keyboard media keys
 #launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
 
