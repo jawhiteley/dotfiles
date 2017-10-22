@@ -72,6 +72,20 @@
     </item>
 
     <item>
+      <name>Fn-Esc to locks off</name>
+      <identifier>private.locks_off</identifier>
+      <autogen>
+        __KeyToKey__
+        KeyCode::ESCAPE, ModifierFlag::FN,
+        KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF, 
+        KeyCode::VK_LOCK_CONTROL_L_FORCE_OFF, 
+        KeyCode::VK_LOCK_OPTION_L_FORCE_OFF, 
+        KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF, 
+        KeyCode::VK_LOCK_FN_FORCE_OFF
+      </autogen>
+    </item>
+
+    <item>
       <!-- This is only really needed for non-Apple keyboards  -->
       <name>F15 (Pause) -> Power</name>
       <appendix>(on non-Apple keyboards).</appendix>
