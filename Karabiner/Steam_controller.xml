@@ -71,7 +71,7 @@
       </item>
 
       <item>
-        <name>Correct Mute [from F17]</name>
+        <name>Correct Mute [from F19]</name>
         <identifier>steam_controller.change_f17_to_volume_mute</identifier>
         <device_only>DeviceVendor::Valve, DeviceProduct::Steam_controller_keys</device_only>
         <autogen>__KeyToKey__ KeyCode::F19, ConsumerKeyCode::VOLUME_MUTE</autogen>
@@ -88,7 +88,7 @@
         <name>Correct Right Shift [from Brightness Down]</name>
         <identifier>steam_controller.change_brightness_down_to_right_shift</identifier>
         <device_only>DeviceVendor::Valve, DeviceProduct::Steam_controller_keys</device_only>
-        <autogen>__KeyToKey__ ConsumerKeyCode::BRIGHTNESS_DOWN, KeyCode::SHIFT_R</autogen>
+        <autogen>__KeyToKey__ KeyCode::F14, KeyCode::SHIFT_R</autogen>
       </item>
 
       <item>
@@ -99,25 +99,33 @@
       </item>
 
       <item>
-        <name>Correct Left Option (alt) [from § Danish Dollar]</name>
+        <name>Correct Right Control [from F16]</name>
+        <identifier>steam_controller.change_f16_to_control_right</identifier>
+        <device_only>DeviceVendor::Valve, DeviceProduct::Steam_controller_keys</device_only>
+        <autogen>__KeyToKey__ KeyCode::F16, KeyCode::CONTROL_R</autogen>
+      </item>
+
+      <!-- changed OPTION_R to COMMAND_L: the controller now sends BOTH keycodes,
+           so the safest thing is to remap the second to the expected modifier -->
+      <item>
+        <name>Correct Left Alt (Cmd) [from § Danish Dollar]</name>
         <identifier>steam_controller.change_danish_dollar_to_left_alt</identifier>
         <device_only>DeviceVendor::Valve, DeviceProduct::Steam_controller_keys</device_only>
-        <autogen>__KeyToKey__ KeyCode::DANISH_DOLLAR, KeyCode::OPTION_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::DANISH_DOLLAR, KeyCode::COMMAND_L</autogen>
       </item>
 
       <item>
-        <name>Correct Right Alt [from F13]</name>
+        <name>Correct Right Alt (Cmd) [from F13]</name>
         <identifier>steam_controller.change_f13_to_alt_right</identifier>
-        <!-- changed OPTION_R to COMMAND_L to allow a way to map a COMMAND key -->
         <device_only>DeviceVendor::Valve, DeviceProduct::Steam_controller_keys</device_only>
         <autogen>__KeyToKey__ KeyCode::F13, KeyCode::COMMAND_L</autogen>
       </item>
 
       <item>
-        <name>Correct Left Control (alt) [from F16]</name>
-        <identifier>steam_controller.change_f16_to_control_right</identifier>
+        <name>Correct Left Option (Windows Key) [from Power Key]</name>
+        <identifier>steam_controller.change_pcpower_to_left_option</identifier>
         <device_only>DeviceVendor::Valve, DeviceProduct::Steam_controller_keys</device_only>
-        <autogen>__KeyToKey__ KeyCode::F16, KeyCode::CONTROL_R</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_POWER, KeyCode::OPTION_L</autogen>
       </item>
 
       <item>
@@ -129,10 +137,10 @@
         </item>
 
         <item>
-          <name>Correct Left Command (Windows Key) [from Power Key]</name>
-          <identifier>steam_controller.change_power_to_left_command</identifier>
+          <name>Correct Left Option (Windows Key) [from Power Key]</name>
+          <identifier>steam_controller.change_power_to_left_option</identifier>
           <device_only>DeviceVendor::Valve, DeviceProduct::ANY</device_only>
-          <autogen>__KeyToKey__ ConsumerKeyCode::POWER, KeyCode::COMMAND_L</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::POWER, KeyCode::OPTION_L</autogen>
         </item>
       </item>
     </item>
