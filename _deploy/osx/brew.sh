@@ -91,14 +91,14 @@ brew cask install carbon-copy-cloner
 brew cask install moom    # window management
 brew cask install keepassx
 #brew cask install macpass
-brew cask install github-desktop
+brew cask install github
 #brew cask install GitX     # I like brotherbard's fork: https://github.com/brotherbard/gitx
 # don't forget "Open in GitX" ;)
 
 
 #===============================================================
 # System Utilities #
-brew cask install karabiner    	# Remap keys for OS X 10.9
+brew cask install karabiner    	# Remap keys for OS X 10.9--10.11 (now karabiner-elements)
 brew cask install seil         	# Remap Capslock and other things Karabiner can not do.
 #brew cask install usb-overdrive     # generic driver for USB input devices without native OS X support
 
