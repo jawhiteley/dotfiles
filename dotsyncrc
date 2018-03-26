@@ -36,6 +36,7 @@ vim/vimrc
 #vim/gvimrc
 Karabiner/private.xml:.ApplicationSupport/Karabiner/private.xml
 [endfiles]
+R/Rprofile-dot:.Rprofile
 
 ## hostname                     type=masterhost, ANY or NONE    files=dotfile:tolink,another:tolink
 [hosts]
