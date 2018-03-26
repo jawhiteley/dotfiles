@@ -1,7 +1,7 @@
 ## .bash_profile is only run when bash is started as an interactive shell
 ## .bashrc is run when bash is invoked as a login shell (not interactive); 
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-export PATH="/usr/local/opt/unison@2.40/bin:$PATH"
+#export PATH="/usr/local/opt/unison@2.40/bin:$PATH"
 export PATH="$PATH:~/.dotfiles/dotsync/bin"
 PATH=${PATH}:/usr/local/mysql/bin
 export PATH="$PATH:~/bin/bibtexformat"
