@@ -1,0 +1,714 @@
+{
+  "title": "@jaw NumLock and NumPad media controls",
+  "rules": [
+    {
+      "description": "NumPad NumLock",
+      "manipulators": [
+        {
+          "description": "toggle num_lock ON",
+          "from": {
+            "key_code": "keypad_num_lock",
+            "modifiers": { "optional": [ "any" ] }
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "num_lock",
+                "value": 1
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 0
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "description": "toggle num_lock OFF",
+          "from": {
+            "key_code": "keypad_num_lock",
+            "modifiers": { "optional": [ "any" ] }
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "num_lock",
+                "value": 0
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 1
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "NumPad media keys with NumLock OFF",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "keypad_1"
+          },
+          "to": [ 
+            { 
+              "key_code": "keypad_1"
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 0
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_2"
+          },
+          "to": [ 
+            { 
+              "key_code": "volume_decrement"
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 0
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_3"
+          },
+          "to": [ 
+            { 
+              "key_code": "display_brightness_decrement"
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 0
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_4"
+          },
+          "to": [ 
+            { 
+              "key_code": "rewind"
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 0
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_5"
+          },
+          "to": [ 
+            { 
+              "key_code": "play_or_pause"
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 0
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_6"
+          },
+          "to": [ 
+            { 
+              "key_code": "fastforward"
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 0
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_7"
+          },
+          "to": [ 
+            { 
+              "key_code": "keypad_7"
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 0
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_8"
+          },
+          "to": [ 
+            { 
+              "key_code": "volume_increment"
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 0
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_9"
+          },
+          "to": [ 
+            { 
+              "key_code": "display_brightness_increment"
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 0
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_0"
+          },
+          "to": [ 
+            { 
+              "key_code": "mute"
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 0
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_period"
+          },
+          "to_if_held_down": [
+            {
+              "shell_command": "open -a 'iTunes.app'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 0
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_slash"
+          },
+          "to": [ 
+            { 
+              "key_code": "keypad_slash"
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 0
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_asterisk"
+          },
+          "to": [ 
+            { 
+              "key_code": "keypad_asterisk"
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 0
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_hyphen"
+          },
+          "to": [ 
+            { 
+              "key_code": "up_arrow"
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 0
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_plus"
+          },
+          "to": [ 
+            { 
+              "key_code": "down_arrow"
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 0
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_enter"
+          },
+          "to": [ 
+            { 
+              "key_code": "keypad_enter"
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 0
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_equal_sign"
+          },
+          "to": [ 
+            { 
+              "key_code": "keypad_equal_sign"
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 0
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_comma"
+          },
+          "to": [ 
+            { 
+              "key_code": "keypad_comma"
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 0
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "NumPad keys with NumLock ON",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "keypad_1"
+          },
+          "to": [ 
+            { 
+              "key_code": "keypad_1"
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 1
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_2"
+          },
+          "to": [ 
+            { 
+              "key_code": "keypad_2"
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 1
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_3"
+          },
+          "to": [ 
+            { 
+              "key_code": "keypad_3"
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 1
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_4"
+          },
+          "to": [ 
+            { 
+              "key_code": "keypad_4"
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 1
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_5"
+          },
+          "to": [ 
+            { 
+              "key_code": "keypad_5"
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 1
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_6"
+          },
+          "to": [ 
+            { 
+              "key_code": "keypad_6"
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 1
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_7"
+          },
+          "to": [ 
+            { 
+              "key_code": "keypad_7"
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 1
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_8"
+          },
+          "to": [ 
+            { 
+              "key_code": "keypad_8"
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 1
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_9"
+          },
+          "to": [ 
+            { 
+              "key_code": "keypad_9"
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 1
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_0"
+          },
+          "to": [ 
+            { 
+              "key_code": "keypad_0"
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 1
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_period"
+          },
+          "to": [ 
+            { 
+              "key_code": "keypad_period"
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 1
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_slash"
+          },
+          "to": [ 
+            { 
+              "key_code": "keypad_slash"
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 1
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_asterisk"
+          },
+          "to": [ 
+            { 
+              "key_code": "keypad_asterisk"
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 1
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_hyphen"
+          },
+          "to": [ 
+            { 
+              "key_code": "keypad_hyphen"
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 1
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_plus"
+          },
+          "to": [ 
+            { 
+              "key_code": "keypad_plus"
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 1
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_enter"
+          },
+          "to": [ 
+            { 
+              "key_code": "keypad_enter"
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 1
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_equal_sign"
+          },
+          "to": [ 
+            { 
+              "key_code": "keypad_equal_sign"
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 1
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_comma"
+          },
+          "to": [ 
+            { 
+              "key_code": "keypad_comma"
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 1
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,178 @@
+{
+  "title": "@jaw custom rules for all keyboards (@jawhiteley)",
+  "rules": [
+    {
+      "description": "fn-ESC to all locks off",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "escape",
+            "modifiers": {
+              "mandatory": [ "fn", "caps_lock" ],
+              "optional": [ "any" ]
+            }
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "sticky_fn",
+                "value": 0
+              }
+            },
+            {
+              "set_variable": {
+                "name": "num_lock",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "caps_lock"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "escape",
+            "modifiers": {
+              "mandatory": [ "fn" ],
+              "optional": [ "any" ]
+            }
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "sticky_fn",
+                "value": 0
+              }
+            },
+            {
+              "set_variable": {
+                "name": "num_lock",
+                "value": 0
+              }
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "Change Caps Lock to Hyper (Cmd+Opt+Ctl+Shift) ; Escape if pressed alone.",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "caps_lock",
+            "modifiers": {
+              "optional": [ "any" ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "left_shift",
+              "modifiers": [
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          ],
+          "to_if_alone": [
+            {
+              "key_code": "escape"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    { 
+      "description": "Toggle caps_lock by pressing left_shift + right_shift at the same time", 
+      "manipulators": [ 
+        { 
+          "type": "basic", 
+          "from": { 
+            "key_code": "left_shift", 
+            "modifiers": { 
+              "mandatory": [ "right_shift" ], 
+              "optional": [ "caps_lock" ] 
+            } 
+          }, 
+          "to": [ { "key_code": "caps_lock" } ], 
+          "to_if_alone": [ { "key_code": "left_shift" } ] 
+        }, 
+        { 
+          "type": "basic", 
+          "from": { 
+            "key_code": "right_shift", 
+            "modifiers": { 
+              "mandatory": [ "left_shift" ], 
+              "optional": [ "caps_lock" ] 
+            } 
+          }, 
+          "to": [ { "key_code": "caps_lock" } ], 
+          "to_if_alone": [ { "key_code": "right_shift" } ] 
+        } 
+      ] 
+    },
+    {
+      "description": "F15 (Pause) -> Power",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "f15",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "power"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "Ctl-F14 (ScrLk) -> Lock Screen (shell script)",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "f14",
+            "modifiers": {
+              "mandatory": [
+                "control"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": ""
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "F2 -> Edit file name (Enter) in Finder",
+      "manipulators": [
+        {
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [ "^com\\.apple\\.finder$" ]
+            }
+          ],
+          "from": { "key_code": "f2" },
+          "to": [ { "key_code": "return_or_enter" } ],
+          "type": "basic"
+        }
+      ]
+    },
+    {}
+  ]
+}
