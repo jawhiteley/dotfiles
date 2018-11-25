@@ -15,13 +15,19 @@
           "to": [
             {
               "set_variable": {
-                "name": "sticky_fn",
+                "name": "num_lock",
                 "value": 0
               }
             },
             {
               "set_variable": {
-                "name": "num_lock",
+                "name": "fn_lock",
+                "value": 0
+              }
+            },
+            {
+              "set_variable": {
+                "name": "sticky_fn",
                 "value": 0
               }
             },
@@ -42,13 +48,19 @@
           "to": [
             {
               "set_variable": {
-                "name": "sticky_fn",
+                "name": "num_lock",
                 "value": 0
               }
             },
             {
               "set_variable": {
-                "name": "num_lock",
+                "name": "fn_lock",
+                "value": 0
+              }
+            },
+            {
+              "set_variable": {
+                "name": "sticky_fn",
                 "value": 0
               }
             }

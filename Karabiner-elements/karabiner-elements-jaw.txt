@@ -1,0 +1,50 @@
+To Do:
+
++ Replicate universal key mapping from Karabiner in Karabiner-Elements
+  - Finish NumPad mappings (Remote Buddy)
+- Replicate Microsoft Sculpt device-specific mappings
+- Replicate Steam Controller device-specific mappings
+
+Ideas for key mapping using Karabiner (now Karabiner-Elements):
+
+* Prevent unintended Cmd-Q
+  - I used a mapping to require a long-press to activate command-Q, but the extra inconvenience seems to outweigh the benefits. Maybe a shorter delay would help?  A double-press also feels like too much extra effort.
+  - https://pqrs.org/osx/karabiner/complex_modifications/#command_q
+
+* Sticky Fn (as opposed to Fn-lock): double-tap Fn to apply fn to the next key pressed.
+  - This may need an extra variable to track the double-press.
+  - or it toggles the sticky_fn variable if pressed alone; fn modifier if pressed alone?
+    - this is simpler in terms of code, but may not be convenient to use.
+
+{ "description": "Quit application by pressing command-q twice", 
+  "manipulators": [ 
+    { "type": "basic", 
+      "conditions": [ 
+        { "type": "variable_if", 
+          "name": "command-q", 
+          "value": 1 
+        } 
+      ], 
+      "from": { 
+        "key_code": "q", 
+        "modifiers": { "mandatory": [ "command" ], "optional": [ "caps_lock" ] } 
+      }, 
+      "to": [ { "key_code": "q", "modifiers": "left_command" } ] 
+    }, 
+    { 
+      "type": "basic", 
+      "from": { 
+        "key_code": "q", 
+        "modifiers": { "mandatory": [ "command" ], "optional": [ "caps_lock" ] } 
+      }, 
+      "to": [ 
+        { "set_variable": { "name": "command-q", "value": 1 } } 
+      ], 
+      "to_delayed_action": { 
+        "to_if_invoked": [ { "set_variable": { "name": "command-q", "value": 0 } } ], 
+        "to_if_canceled": [ { "set_variable": { "name": "command-q", "value": 0 } } ] 
+      } 
+    } 
+  ] 
+},
+
