@@ -127,26 +127,28 @@
         } 
       ] 
     },
-    {
-      "description": "F15 (Pause) -> Power",
-      "manipulators": [
-        {
-          "from": {
-            "key_code": "f15",
-            "modifiers": {
-              "optional": [
-                "any"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "power"
+    { 
+      "description": "Quit application by holding command-q (0.25s)", 
+      "manipulators": [ 
+        { 
+          "type": "basic", 
+          "from": { 
+            "key_code": "q", 
+            "modifiers": { 
+              "mandatory": [ "command" ], 
+              "optional": [ "caps_lock" ] 
+            } 
+          }, 
+          "to_if_held_down": [ 
+            { 
+              "key_code": "q", 
+              "modifiers": [ "left_command" ], 
+              "repeat": false 
             }
           ],
-          "type": "basic"
-        }
-      ]
+          "parameters" : { "basic.to_if_held_down_threshold_milliseconds" : 250 }
+        } 
+      ] 
     },
     {
       "description": "Hold (& release) Shift-Ctl -> Toggle mac os sticky keys (Shift x5)",
@@ -155,7 +157,8 @@
           "from": {
             "key_code": "left_control",
             "modifiers": {
-              "mandatory": [ "shift" ]
+              "mandatory": [ "shift" ],
+              "optional": [ "caps_lock" ] 
             }
           },
           "to": [
@@ -196,6 +199,27 @@
             { "key_code": "left_shift" },
             { "key_code": "left_shift" },
             { "key_code": "left_shift" }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "F15 (Pause) -> Power",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "f15",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "power"
+            }
           ],
           "type": "basic"
         }
