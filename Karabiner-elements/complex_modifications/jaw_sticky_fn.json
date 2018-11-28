@@ -1,6 +1,107 @@
 {
-  "title": "@jaw Fn lock for fn-keys",
+  "title": "@jaw Easier operation of fn-keys with one hand: Sticky and Lock Fn for fn-keys",
   "rules": [
+    {
+      "description": "Opt-fn keys -> Fn-fn keys (easier 1-handed)",
+      "manipulators": [
+        {
+          "from": { 
+            "key_code": "f1", 
+            "modifiers": { "mandatory" : [ "option" ] }
+          },
+          "to": [ { "key_code": "f1", "modifiers": [ "fn" ] } ],
+          "type": "basic"
+        },
+        {
+          "from": { 
+            "key_code": "f2", 
+            "modifiers": { "mandatory" : [ "option" ] }
+          },
+          "to": [ { "key_code": "f2", "modifiers": [ "fn" ] } ],
+          "type": "basic"
+        },
+        {
+          "from": { 
+            "key_code": "f3", 
+            "modifiers": { "mandatory" : [ "option" ] }
+          },
+          "to": [ { "key_code": "f3", "modifiers": [ "fn" ] } ],
+          "type": "basic"
+        },
+        {
+          "from": { 
+            "key_code": "f4", 
+            "modifiers": { "mandatory" : [ "option" ] }
+          },
+          "to": [ { "key_code": "f4", "modifiers": [ "fn" ] } ],
+          "type": "basic"
+        },
+        {
+          "from": { 
+            "key_code": "f5", 
+            "modifiers": { "mandatory" : [ "option" ] }
+          },
+          "to": [ { "key_code": "f5", "modifiers": [ "fn" ] } ],
+          "type": "basic"
+        },
+        {
+          "from": { 
+            "key_code": "f6", 
+            "modifiers": { "mandatory" : [ "option" ] }
+          },
+          "to": [ { "key_code": "f6", "modifiers": [ "fn" ] } ],
+          "type": "basic"
+        },
+        {
+          "from": { 
+            "key_code": "f7", 
+            "modifiers": { "mandatory" : [ "option" ] }
+          },
+          "to": [ { "key_code": "f7", "modifiers": [ "fn" ] } ],
+          "type": "basic"
+        },
+        {
+          "from": { 
+            "key_code": "f8", 
+            "modifiers": { "mandatory" : [ "option" ] }
+          },
+          "to": [ { "key_code": "f8", "modifiers": [ "fn" ] } ],
+          "type": "basic"
+        },
+        {
+          "from": { 
+            "key_code": "f9", 
+            "modifiers": { "mandatory" : [ "option" ] }
+          },
+          "to": [ { "key_code": "f9", "modifiers": [ "fn" ] } ],
+          "type": "basic"
+        },
+        {
+          "from": { 
+            "key_code": "f10", 
+            "modifiers": { "mandatory" : [ "option" ] }
+          },
+          "to": [ { "key_code": "f10", "modifiers": [ "fn" ] } ],
+          "type": "basic"
+        },
+        {
+          "from": { 
+            "key_code": "f11", 
+            "modifiers": { "mandatory" : [ "option" ] }
+          },
+          "to": [ { "key_code": "f11", "modifiers": [ "fn" ] } ],
+          "type": "basic"
+        },
+        {
+          "from": { 
+            "key_code": "f12", 
+            "modifiers": { "mandatory" : [ "option" ] }
+          },
+          "to": [ { "key_code": "f12", "modifiers": [ "fn" ] } ],
+          "type": "basic"
+        }
+      ]
+    },
     {
       "description": "Fn lock: Cmd-Opt-Ctl-Fn -> toggle Fn lock",
       "manipulators": [
