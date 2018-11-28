@@ -149,6 +149,59 @@
       ]
     },
     {
+      "description": "Hold (& release) Shift-Ctl -> Toggle mac os sticky keys (Shift x5)",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "left_control",
+            "modifiers": {
+              "mandatory": [ "shift" ]
+            }
+          },
+          "to": [
+            { 
+              "key_code": "left_control",
+              "modifiers": [ "shift" ]
+            }
+          ],
+          "to_if_held_down": [
+            { "key_code": "vk_none" },
+            { "key_code": "left_shift" },
+            { "key_code": "left_shift" },
+            { "key_code": "left_shift" },
+            { "key_code": "left_shift" },
+            { "key_code": "left_shift" }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "[X] Hold (& release) Fn -> Toggle mac os sticky keys (Shift x5)",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "fn",
+            "modifiers": {
+              "optional" : [ "any" ]
+            }
+          },
+          "to": [
+            { "key_code": "fn" }
+          ],
+          "to_if_held_down": [
+            { "key_code": "vk_none" },
+            { "key_code": "left_shift" },
+            { "key_code": "left_shift" },
+            { "key_code": "left_shift" },
+            { "key_code": "left_shift" },
+            { "key_code": "left_shift" }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
       "description": "Ctl-F14 (ScrLk) -> Lock Screen (shell script)",
       "manipulators": [
         {

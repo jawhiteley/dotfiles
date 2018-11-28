@@ -5,6 +5,8 @@ To Do:
 - Replicate Microsoft Sculpt device-specific mappings
 - Replicate Steam Controller device-specific mappings
 
+
+
 Ideas for key mapping using Karabiner (now Karabiner-Elements):
 
 * Prevent unintended Cmd-Q
@@ -13,7 +15,8 @@ Ideas for key mapping using Karabiner (now Karabiner-Elements):
 
 * Sticky Fn (as opposed to Fn-lock): double-tap Fn to apply fn to the next key pressed.
   - This may need an extra variable to track the double-press.
-  - or it toggles the sticky_fn variable if pressed alone; fn modifier if pressed alone?
+    - While a variable can have values other than 1 or 0, it does not behave as expected if the same variable is used to track the double-press (it never takes on the value of the second press, but just reverts to 0, presumably because the event is still using that variable while waiting for invoked of cancel events.)
+  - or it toggles the sticky_fn variable if pressed alone; fn modifier if pressed with another key?
     - this is simpler in terms of code, but may not be convenient to use.
 
 { "description": "Quit application by pressing command-q twice", 
@@ -48,3 +51,10 @@ Ideas for key mapping using Karabiner (now Karabiner-Elements):
   ] 
 },
 
+* Activating mac os sticky keys.
+  - This can be a quicker alternative to programming a bunch of conditions with variables for specific sticky keys (mostly fn-keys for media controls), and has the added advantage of having built-in notifications (sounds and display).
+  - Can be done by activating "shift" x5 (with the appropriate option activated in System Preferences); or using Applescript to open System Preferences and selecting the appropriate ui check box.
+  - I have not found a way to activate it with a shell command.
+  - The problem with the Shift x5 shortcut is that if _multiple_ modifier keys are used as part of the rule in Karabiner, a modifier may get activated after sticky keys is turned on and the keys are released: as soon as one modifier key is released, the flags of the others are changed and they get triggered in Sticky Keys. This does not happen if a single modifier is used.
+    - some null events ("key_code": "vk_none") may be required to trigger the fifth shift key press, although the last press may only be triggered when the keys are released. It also seems to depend on how many modifier keys are used in the from-mapping.
+    - The advantage to requiring the keys to be released to fire the last key is that it allows the key combination to be used in other shortcuts while holding the keys (the shift modifier will still be active until released): the mapped event will only really be triggered if the key combination is held without any other keys.
