@@ -33,13 +33,19 @@
                                 "to": [
                                     {
                                         "set_variable": {
-                                            "name": "sticky_fn",
+                                            "name": "num_lock",
                                             "value": 0
                                         }
                                     },
                                     {
                                         "set_variable": {
-                                            "name": "num_lock",
+                                            "name": "fn_lock",
+                                            "value": 0
+                                        }
+                                    },
+                                    {
+                                        "set_variable": {
+                                            "name": "sticky_fn",
                                             "value": 0
                                         }
                                     },
@@ -64,13 +70,19 @@
                                 "to": [
                                     {
                                         "set_variable": {
-                                            "name": "sticky_fn",
+                                            "name": "num_lock",
                                             "value": 0
                                         }
                                     },
                                     {
                                         "set_variable": {
-                                            "name": "num_lock",
+                                            "name": "fn_lock",
+                                            "value": 0
+                                        }
+                                    },
+                                    {
+                                        "set_variable": {
+                                            "name": "sticky_fn",
                                             "value": 0
                                         }
                                     }
@@ -164,12 +176,15 @@
                         ]
                     },
                     {
-                        "description": "F15 (Pause) -> Power",
+                        "description": "Insert -> Fn (Opt+Insert -> Insert?)",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "f15",
+                                    "key_code": "insert",
                                     "modifiers": {
+                                        "mandatory": [
+                                            "option"
+                                        ],
                                         "optional": [
                                             "any"
                                         ]
@@ -177,7 +192,12 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "power"
+                                        "key_code": "insert"
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "fn"
                                     }
                                 ],
                                 "type": "basic"
@@ -185,11 +205,11 @@
                         ]
                     },
                     {
-                        "description": "Ctl-F14 (ScrLk) -> Lock Screen (shell script)",
+                        "description": "PrtScn -> Screen capture to clipboard (+Ctl interactive)",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "f14",
+                                    "key_code": "print_screen",
                                     "modifiers": {
                                         "mandatory": [
                                             "control"
@@ -198,7 +218,91 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": ""
+                                        "shell_command": "screencapture -ic"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "print_screen",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "screencapture -c"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "ScrLk -> Mission Control; Ctl+ScrLk -> Lock Screen (shell script)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "scroll_lock",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "control"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "~/.dotfiles/Karabiner-elements/lockscreen"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "scroll_lock",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "mission_control"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Quit application by holding command-q (0.25s)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "q",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "command"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "parameters": {
+                                    "basic.to_if_held_down_threshold_milliseconds": 250
+                                },
+                                "to_if_held_down": [
+                                    {
+                                        "key_code": "q",
+                                        "modifiers": [
+                                            "left_command"
+                                        ],
+                                        "repeat": false
                                     }
                                 ],
                                 "type": "basic"
@@ -230,17 +334,297 @@
                         ]
                     },
                     {
-                        "description": "Sticky Fn: Cmd-Opt-Ctl-Fn -> toggle sticky Fn",
+                        "description": "Hold (& release) Shift-Ctl -> Toggle mac os sticky keys (Shift x5; must be enabled in System Preferences)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "left_control",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "shift"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_control",
+                                        "modifiers": [
+                                            "shift"
+                                        ]
+                                    }
+                                ],
+                                "to_if_held_down": [
+                                    {
+                                        "key_code": "vk_none"
+                                    },
+                                    {
+                                        "key_code": "left_shift"
+                                    },
+                                    {
+                                        "key_code": "left_shift"
+                                    },
+                                    {
+                                        "key_code": "left_shift"
+                                    },
+                                    {
+                                        "key_code": "left_shift"
+                                    },
+                                    {
+                                        "key_code": "left_shift"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Opt-fn keys -> Fn-fn keys (easier 1-handed)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "f1",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f1",
+                                        "modifiers": [
+                                            "fn"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "f2",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f2",
+                                        "modifiers": [
+                                            "fn"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "f3",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f3",
+                                        "modifiers": [
+                                            "fn"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "f4",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f4",
+                                        "modifiers": [
+                                            "fn"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "f5",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f5",
+                                        "modifiers": [
+                                            "fn"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "f6",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f6",
+                                        "modifiers": [
+                                            "fn"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "f7",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f7",
+                                        "modifiers": [
+                                            "fn"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "f8",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f8",
+                                        "modifiers": [
+                                            "fn"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "f9",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f9",
+                                        "modifiers": [
+                                            "fn"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "f10",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f10",
+                                        "modifiers": [
+                                            "fn"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "f11",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f11",
+                                        "modifiers": [
+                                            "fn"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "f12",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f12",
+                                        "modifiers": [
+                                            "fn"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Fn lock: Cmd-Opt-Ctl-Fn -> toggle Fn lock",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
-                                        "name": "sticky_fn",
+                                        "name": "fn_lock",
                                         "type": "variable_if",
                                         "value": 0
                                     }
                                 ],
-                                "description": "toggle sticky Fn ON",
+                                "description": "toggle Fn lock ON",
                                 "from": {
                                     "key_code": "fn",
                                     "modifiers": {
@@ -249,6 +633,373 @@
                                             "left_control",
                                             "left_option"
                                         ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "set_variable": {
+                                            "name": "fn_lock",
+                                            "value": 1
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "fn_lock",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "toggle Fn lock OFF",
+                                "from": {
+                                    "key_code": "fn",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command",
+                                            "left_control",
+                                            "left_option"
+                                        ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "set_variable": {
+                                            "name": "fn_lock",
+                                            "value": 0
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Fn lock -> fn keys",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "fn_lock",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f1"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f1",
+                                        "modifiers": [
+                                            "fn"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "fn_lock",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f2"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f2",
+                                        "modifiers": [
+                                            "fn"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "fn_lock",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f3"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f3",
+                                        "modifiers": [
+                                            "fn"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "fn_lock",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f4"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f4",
+                                        "modifiers": [
+                                            "fn"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "fn_lock",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f5"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f5",
+                                        "modifiers": [
+                                            "fn"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "fn_lock",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f6"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f6",
+                                        "modifiers": [
+                                            "fn"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "fn_lock",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f7"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f7",
+                                        "modifiers": [
+                                            "fn"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "fn_lock",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f8"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f8",
+                                        "modifiers": [
+                                            "fn"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "fn_lock",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f9"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f9",
+                                        "modifiers": [
+                                            "fn"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "fn_lock",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f10"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f10",
+                                        "modifiers": [
+                                            "fn"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "fn_lock",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f11"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f11",
+                                        "modifiers": [
+                                            "fn"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "fn_lock",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f12"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f12",
+                                        "modifiers": [
+                                            "fn"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Fn lock -> other keys",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "fn_lock",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "delete_or_backspace"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "delete_or_backspace",
+                                        "modifiers": [
+                                            "fn"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "fn_lock",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "escape"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "escape",
+                                        "modifiers": [
+                                            "fn"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Sticky Fn: Press Fn twice -> activate sticky Fn",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "sticky.fn",
+                                        "type": "variable_if",
+                                        "value": -1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "fn",
+                                    "modifiers": {
                                         "optional": [
                                             "any"
                                         ]
@@ -260,27 +1011,17 @@
                                             "name": "sticky_fn",
                                             "value": 1
                                         }
+                                    },
+                                    {
+                                        "key_code": "fn"
                                     }
                                 ],
                                 "type": "basic"
                             },
                             {
-                                "conditions": [
-                                    {
-                                        "name": "sticky_fn",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "description": "toggle sticky Fn OFF",
                                 "from": {
                                     "key_code": "fn",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "left_command",
-                                            "left_control",
-                                            "left_option"
-                                        ],
                                         "optional": [
                                             "any"
                                         ]
@@ -289,11 +1030,32 @@
                                 "to": [
                                     {
                                         "set_variable": {
-                                            "name": "sticky_fn",
-                                            "value": 0
+                                            "name": "sticky.fn",
+                                            "value": -1
                                         }
+                                    },
+                                    {
+                                        "key_code": "fn"
                                     }
                                 ],
+                                "to_delayed_action": {
+                                    "to_if_canceled": [
+                                        {
+                                            "set_variable": {
+                                                "name": "sticky.fn",
+                                                "value": 0
+                                            }
+                                        }
+                                    ],
+                                    "to_if_invoked": [
+                                        {
+                                            "set_variable": {
+                                                "name": "sticky.fn",
+                                                "value": 0
+                                            }
+                                        }
+                                    ]
+                                },
                                 "type": "basic"
                             }
                         ]
@@ -313,6 +1075,12 @@
                                     "key_code": "f1"
                                 },
                                 "to": [
+                                    {
+                                        "set_variable": {
+                                            "name": "sticky_fn",
+                                            "value": 0
+                                        }
+                                    },
                                     {
                                         "key_code": "f1",
                                         "modifiers": [
@@ -335,6 +1103,12 @@
                                 },
                                 "to": [
                                     {
+                                        "set_variable": {
+                                            "name": "sticky_fn",
+                                            "value": 0
+                                        }
+                                    },
+                                    {
                                         "key_code": "f2",
                                         "modifiers": [
                                             "fn"
@@ -355,6 +1129,12 @@
                                     "key_code": "f3"
                                 },
                                 "to": [
+                                    {
+                                        "set_variable": {
+                                            "name": "sticky_fn",
+                                            "value": 0
+                                        }
+                                    },
                                     {
                                         "key_code": "f3",
                                         "modifiers": [
@@ -377,6 +1157,12 @@
                                 },
                                 "to": [
                                     {
+                                        "set_variable": {
+                                            "name": "sticky_fn",
+                                            "value": 0
+                                        }
+                                    },
+                                    {
                                         "key_code": "f4",
                                         "modifiers": [
                                             "fn"
@@ -397,6 +1183,12 @@
                                     "key_code": "f5"
                                 },
                                 "to": [
+                                    {
+                                        "set_variable": {
+                                            "name": "sticky_fn",
+                                            "value": 0
+                                        }
+                                    },
                                     {
                                         "key_code": "f5",
                                         "modifiers": [
@@ -419,6 +1211,12 @@
                                 },
                                 "to": [
                                     {
+                                        "set_variable": {
+                                            "name": "sticky_fn",
+                                            "value": 0
+                                        }
+                                    },
+                                    {
                                         "key_code": "f6",
                                         "modifiers": [
                                             "fn"
@@ -439,6 +1237,12 @@
                                     "key_code": "f7"
                                 },
                                 "to": [
+                                    {
+                                        "set_variable": {
+                                            "name": "sticky_fn",
+                                            "value": 0
+                                        }
+                                    },
                                     {
                                         "key_code": "f7",
                                         "modifiers": [
@@ -461,6 +1265,12 @@
                                 },
                                 "to": [
                                     {
+                                        "set_variable": {
+                                            "name": "sticky_fn",
+                                            "value": 0
+                                        }
+                                    },
+                                    {
                                         "key_code": "f8",
                                         "modifiers": [
                                             "fn"
@@ -482,26 +1292,11 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "f9",
-                                        "modifiers": [
-                                            "fn"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "sticky_fn",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "f9"
-                                },
-                                "to": [
+                                        "set_variable": {
+                                            "name": "sticky_fn",
+                                            "value": 0
+                                        }
+                                    },
                                     {
                                         "key_code": "f9",
                                         "modifiers": [
@@ -524,6 +1319,12 @@
                                 },
                                 "to": [
                                     {
+                                        "set_variable": {
+                                            "name": "sticky_fn",
+                                            "value": 0
+                                        }
+                                    },
+                                    {
                                         "key_code": "f10",
                                         "modifiers": [
                                             "fn"
@@ -545,6 +1346,12 @@
                                 },
                                 "to": [
                                     {
+                                        "set_variable": {
+                                            "name": "sticky_fn",
+                                            "value": 0
+                                        }
+                                    },
+                                    {
                                         "key_code": "f11",
                                         "modifiers": [
                                             "fn"
@@ -565,6 +1372,12 @@
                                     "key_code": "f12"
                                 },
                                 "to": [
+                                    {
+                                        "set_variable": {
+                                            "name": "sticky_fn",
+                                            "value": 0
+                                        }
+                                    },
                                     {
                                         "key_code": "f12",
                                         "modifiers": [
@@ -592,6 +1405,12 @@
                                 },
                                 "to": [
                                     {
+                                        "set_variable": {
+                                            "name": "sticky_fn",
+                                            "value": 0
+                                        }
+                                    },
+                                    {
                                         "key_code": "delete_or_backspace",
                                         "modifiers": [
                                             "fn"
@@ -612,6 +1431,12 @@
                                     "key_code": "escape"
                                 },
                                 "to": [
+                                    {
+                                        "set_variable": {
+                                            "name": "sticky_fn",
+                                            "value": 0
+                                        }
+                                    },
                                     {
                                         "key_code": "escape",
                                         "modifiers": [
@@ -1370,18 +2195,10 @@
                     "simple_modifications": [
                         {
                             "from": {
-                                "key_code": "left_option"
+                                "key_code": "application"
                             },
                             "to": {
-                                "key_code": "left_command"
-                            }
-                        },
-                        {
-                            "from": {
                                 "key_code": "right_option"
-                            },
-                            "to": {
-                                "key_code": "right_command"
                             }
                         },
                         {
@@ -1394,10 +2211,171 @@
                         },
                         {
                             "from": {
+                                "key_code": "left_option"
+                            },
+                            "to": {
+                                "key_code": "left_command"
+                            }
+                        },
+                        {
+                            "from": {
                                 "key_code": "right_command"
                             },
                             "to": {
                                 "key_code": "right_option"
+                            }
+                        },
+                        {
+                            "from": {
+                                "key_code": "right_option"
+                            },
+                            "to": {
+                                "key_code": "right_command"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": false,
+                        "product_id": 33424,
+                        "vendor_id": 1452
+                    },
+                    "ignore": false,
+                    "manipulate_caps_lock_led": true,
+                    "simple_modifications": []
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": false,
+                        "is_pointing_device": true,
+                        "product_id": 1957,
+                        "vendor_id": 1118
+                    },
+                    "ignore": false,
+                    "manipulate_caps_lock_led": false,
+                    "simple_modifications": [
+                        {
+                            "from": {
+                                "key_code": "right_command"
+                            },
+                            "to": {
+                                "key_code": "launchpad"
+                            }
+                        },
+                        {
+                            "from": {
+                                "key_code": "right_option"
+                            },
+                            "to": {
+                                "key_code": "launchpad"
+                            }
+                        },
+                        {
+                            "from": {
+                                "pointing_button": "button4"
+                            },
+                            "to": {
+                                "key_code": "mission_control"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": false,
+                        "product_id": 4423,
+                        "vendor_id": 10462
+                    },
+                    "ignore": false,
+                    "manipulate_caps_lock_led": false,
+                    "simple_modifications": [
+                        {
+                            "from": {
+                                "key_code": "application"
+                            },
+                            "to": {
+                                "key_code": "left_shift"
+                            }
+                        },
+                        {
+                            "from": {
+                                "key_code": "f13"
+                            },
+                            "to": {
+                                "key_code": "left_command"
+                            }
+                        },
+                        {
+                            "from": {
+                                "key_code": "f14"
+                            },
+                            "to": {
+                                "key_code": "right_shift"
+                            }
+                        },
+                        {
+                            "from": {
+                                "key_code": "f16"
+                            },
+                            "to": {
+                                "key_code": "right_control"
+                            }
+                        },
+                        {
+                            "from": {
+                                "key_code": "f17"
+                            },
+                            "to": {
+                                "consumer_key_code": "volume_increment"
+                            }
+                        },
+                        {
+                            "from": {
+                                "key_code": "f18"
+                            },
+                            "to": {
+                                "consumer_key_code": "volume_decrement"
+                            }
+                        },
+                        {
+                            "from": {
+                                "key_code": "f19"
+                            },
+                            "to": {
+                                "consumer_key_code": "mute"
+                            }
+                        },
+                        {
+                            "from": {
+                                "key_code": "keypad_equal_sign"
+                            },
+                            "to": {
+                                "key_code": "left_control"
+                            }
+                        },
+                        {
+                            "from": {
+                                "key_code": "non_us_backslash"
+                            },
+                            "to": {
+                                "key_code": "left_command"
+                            }
+                        },
+                        {
+                            "from": {
+                                "key_code": "power"
+                            },
+                            "to": {
+                                "key_code": "left_option"
                             }
                         }
                     ]
@@ -1506,7 +2484,15 @@
             "simple_modifications": [
                 {
                     "from": {
-                        "key_code": "help"
+                        "key_code": "application"
+                    },
+                    "to": {
+                        "key_code": "right_option"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "insert"
                     },
                     "to": {
                         "key_code": "fn"

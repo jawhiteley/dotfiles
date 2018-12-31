@@ -128,6 +128,73 @@
       ] 
     },
     { 
+      "description": "Insert -> Fn (Opt+Insert -> Insert?)", 
+      "manipulators": [ 
+        { 
+          "type": "basic", 
+          "from": { 
+            "key_code": "insert", 
+            "modifiers": { 
+              "mandatory": [ "option" ], 
+              "optional": [ "any" ] 
+            } 
+          }, 
+          "to": [ { "key_code": "insert" } ], 
+          "to_if_alone": [ { "key_code": "fn" } ] 
+        } 
+      ] 
+    },
+    {
+      "description": "PrtScn -> Screen capture to clipboard (+Ctl interactive)",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "print_screen",
+            "modifiers": { "mandatory": [ "control" ] }
+          },
+          "to": [
+            {
+              "shell_command": "screencapture -ic"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "print_screen",
+            "modifiers": { "optional": [ "any" ] }
+          },
+          "to": [ { "shell_command": "screencapture -c" } ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "ScrLk -> Mission Control; Ctl+ScrLk -> Lock Screen (shell script)",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "scroll_lock",
+            "modifiers": { "mandatory": [ "control" ] }
+          },
+          "to": [
+            {
+              "shell_command": "~/.dotfiles/Karabiner-elements/lockscreen"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "scroll_lock",
+            "modifiers": { "optional": [ "any" ] }
+          },
+          "to": [ { "key_code": "mission_control" } ],
+          "type": "basic"
+        }
+      ]
+    },
+    { 
       "description": "Quit application by holding command-q (0.25s)", 
       "manipulators": [ 
         { 
@@ -151,7 +218,23 @@
       ] 
     },
     {
-      "description": "Hold (& release) Shift-Ctl -> Toggle mac os sticky keys (Shift x5)",
+      "description": "F2 -> Edit file name (Enter) in Finder",
+      "manipulators": [
+        {
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [ "^com\\.apple\\.finder$" ]
+            }
+          ],
+          "from": { "key_code": "f2" },
+          "to": [ { "key_code": "return_or_enter" } ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "Hold (& release) Shift-Ctl -> Toggle mac os sticky keys (Shift x5; must be enabled in System Preferences)",
       "manipulators": [
         {
           "from": {
@@ -205,59 +288,32 @@
       ]
     },
     {
-      "description": "F15 (Pause) -> Power",
-      "manipulators": [
-        {
-          "from": {
-            "key_code": "f15",
-            "modifiers": {
-              "optional": [
-                "any"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "power"
-            }
-          ],
-          "type": "basic"
-        }
-      ]
-    },
-    {
-      "description": "Ctl-F14 (ScrLk) -> Lock Screen (shell script)",
-      "manipulators": [
-        {
-          "from": {
-            "key_code": "f14",
-            "modifiers": {
-              "mandatory": [
-                "control"
-              ]
-            }
-          },
-          "to": [
-            {
-              "shell_command": ""
-            }
-          ],
-          "type": "basic"
-        }
-      ]
-    },
-    {
-      "description": "F2 -> Edit file name (Enter) in Finder",
+      "description": "[-] Steam Controller - open Steam",
       "manipulators": [
         {
           "conditions": [
             {
-              "type": "frontmost_application_if",
-              "bundle_identifiers": [ "^com\\.apple\\.finder$" ]
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Steam Controller",
+                  "vendor_id": 10462,
+                  "product_id": 4423
+                }
+              ]
             }
           ],
-          "from": { "key_code": "f2" },
-          "to": [ { "key_code": "return_or_enter" } ],
+          "from": { 
+            "simultaneous": [
+              {
+                "key_code": "tab"
+              },
+              {
+                "key_code": "escape"
+              }
+            ]
+          },
+          "to_if_held_down": [ { "shell_command": "open -a Steam" } ],
           "type": "basic"
         }
       ]
