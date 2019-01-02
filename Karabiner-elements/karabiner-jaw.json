@@ -218,7 +218,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "screencapture -ic"
+                                        "shell_command": "screencapture -iWoc"
                                     }
                                 ],
                                 "type": "basic"
@@ -2222,7 +2222,7 @@
                                 "key_code": "right_command"
                             },
                             "to": {
-                                "key_code": "right_option"
+                                "key_code": "launchpad"
                             }
                         },
                         {
@@ -2231,6 +2231,14 @@
                             },
                             "to": {
                                 "key_code": "right_command"
+                            }
+                        },
+                        {
+                            "from": {
+                                "pointing_button": "button4"
+                            },
+                            "to": {
+                                "key_code": "mission_control"
                             }
                         }
                     ]
@@ -2257,34 +2265,9 @@
                         "product_id": 1957,
                         "vendor_id": 1118
                     },
-                    "ignore": false,
+                    "ignore": true,
                     "manipulate_caps_lock_led": false,
-                    "simple_modifications": [
-                        {
-                            "from": {
-                                "key_code": "right_command"
-                            },
-                            "to": {
-                                "key_code": "launchpad"
-                            }
-                        },
-                        {
-                            "from": {
-                                "key_code": "right_option"
-                            },
-                            "to": {
-                                "key_code": "launchpad"
-                            }
-                        },
-                        {
-                            "from": {
-                                "pointing_button": "button4"
-                            },
-                            "to": {
-                                "key_code": "mission_control"
-                            }
-                        }
-                    ]
+                    "simple_modifications": []
                 },
                 {
                     "disable_built_in_keyboard_if_exists": false,

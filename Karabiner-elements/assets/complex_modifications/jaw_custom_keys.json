@@ -154,7 +154,7 @@
           },
           "to": [
             {
-              "shell_command": "screencapture -ic"
+              "shell_command": "screencapture -iWoc"
             }
           ],
           "type": "basic"

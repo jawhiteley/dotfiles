@@ -7,7 +7,6 @@ To Do:
     - keypad_dot -> remote menu
     - 2,4, 5, 6, 8: menu navigation
 + Replicate Microsoft Sculpt device-specific mappings
-  - Windows button on mouse to Launchpad?
 + Replicate Steam Controller device-specific mappings
 
 
