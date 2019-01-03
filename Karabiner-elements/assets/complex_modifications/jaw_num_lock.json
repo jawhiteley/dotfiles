@@ -57,7 +57,8 @@
       "manipulators": [
         {
           "from": {
-            "key_code": "keypad_1"
+            "key_code": "keypad_1",
+            "modifiers": { "optional": [ "any" ] }
           },
           "to": [ 
             { 
@@ -75,7 +76,8 @@
         },
         {
           "from": {
-            "key_code": "keypad_2"
+            "key_code": "keypad_2",
+            "modifiers": { "optional": [ "any" ] }
           },
           "to": [ 
             { 
@@ -93,7 +95,8 @@
         },
         {
           "from": {
-            "key_code": "keypad_3"
+            "key_code": "keypad_3",
+            "modifiers": { "optional": [ "any" ] }
           },
           "to": [ 
             { 
@@ -111,7 +114,8 @@
         },
         {
           "from": {
-            "key_code": "keypad_4"
+            "key_code": "keypad_4",
+            "modifiers": { "optional": [ "any" ] }
           },
           "to": [ 
             { 
@@ -129,7 +133,8 @@
         },
         {
           "from": {
-            "key_code": "keypad_5"
+            "key_code": "keypad_5",
+            "modifiers": { "optional": [ "any" ] }
           },
           "to": [ 
             { 
@@ -147,7 +152,8 @@
         },
         {
           "from": {
-            "key_code": "keypad_6"
+            "key_code": "keypad_6",
+            "modifiers": { "optional": [ "any" ] }
           },
           "to": [ 
             { 
@@ -165,7 +171,8 @@
         },
         {
           "from": {
-            "key_code": "keypad_7"
+            "key_code": "keypad_7",
+            "modifiers": { "optional": [ "any" ] }
           },
           "to": [ 
             { 
@@ -183,7 +190,8 @@
         },
         {
           "from": {
-            "key_code": "keypad_8"
+            "key_code": "keypad_8",
+            "modifiers": { "optional": [ "any" ] }
           },
           "to": [ 
             { 
@@ -201,7 +209,8 @@
         },
         {
           "from": {
-            "key_code": "keypad_9"
+            "key_code": "keypad_9",
+            "modifiers": { "optional": [ "any" ] }
           },
           "to": [ 
             { 
@@ -219,7 +228,8 @@
         },
         {
           "from": {
-            "key_code": "keypad_0"
+            "key_code": "keypad_0",
+            "modifiers": { "optional": [ "any" ] }
           },
           "to": [ 
             { 
@@ -237,7 +247,8 @@
         },
         {
           "from": {
-            "key_code": "keypad_period"
+            "key_code": "keypad_period",
+            "modifiers": { "optional": [ "any" ] }
           },
           "to_if_held_down": [
             {
@@ -255,7 +266,8 @@
         },
         {
           "from": {
-            "key_code": "keypad_slash"
+            "key_code": "keypad_slash",
+            "modifiers": { "optional": [ "any" ] }
           },
           "to": [ 
             { 
@@ -273,7 +285,8 @@
         },
         {
           "from": {
-            "key_code": "keypad_asterisk"
+            "key_code": "keypad_asterisk",
+            "modifiers": { "optional": [ "any" ] }
           },
           "to": [ 
             { 
@@ -291,7 +304,8 @@
         },
         {
           "from": {
-            "key_code": "keypad_hyphen"
+            "key_code": "keypad_hyphen",
+            "modifiers": { "optional": [ "any" ] }
           },
           "to": [ 
             { 
@@ -309,7 +323,8 @@
         },
         {
           "from": {
-            "key_code": "keypad_plus"
+            "key_code": "keypad_plus",
+            "modifiers": { "optional": [ "any" ] }
           },
           "to": [ 
             { 
@@ -327,7 +342,8 @@
         },
         {
           "from": {
-            "key_code": "keypad_enter"
+            "key_code": "keypad_enter",
+            "modifiers": { "optional": [ "any" ] }
           },
           "to": [ 
             { 
@@ -345,7 +361,8 @@
         },
         {
           "from": {
-            "key_code": "keypad_equal_sign"
+            "key_code": "keypad_equal_sign",
+            "modifiers": { "optional": [ "any" ] }
           },
           "to": [ 
             { 
@@ -363,7 +380,8 @@
         },
         {
           "from": {
-            "key_code": "keypad_comma"
+            "key_code": "keypad_comma",
+            "modifiers": { "optional": [ "any" ] }
           },
           "to": [ 
             { 
@@ -386,7 +404,8 @@
       "manipulators": [
         {
           "from": {
-            "key_code": "keypad_1"
+            "key_code": "keypad_1",
+            "modifiers": { "optional": [ "any" ] }
           },
           "to": [ 
             { 
@@ -404,7 +423,8 @@
         },
         {
           "from": {
-            "key_code": "keypad_2"
+            "key_code": "keypad_2",
+            "modifiers": { "optional": [ "any" ] }
           },
           "to": [ 
             { 
@@ -422,7 +442,8 @@
         },
         {
           "from": {
-            "key_code": "keypad_3"
+            "key_code": "keypad_3",
+            "modifiers": { "optional": [ "any" ] }
           },
           "to": [ 
             { 
@@ -440,7 +461,8 @@
         },
         {
           "from": {
-            "key_code": "keypad_4"
+            "key_code": "keypad_4",
+            "modifiers": { "optional": [ "any" ] }
           },
           "to": [ 
             { 
@@ -458,7 +480,8 @@
         },
         {
           "from": {
-            "key_code": "keypad_5"
+            "key_code": "keypad_5",
+            "modifiers": { "optional": [ "any" ] }
           },
           "to": [ 
             { 
@@ -476,7 +499,8 @@
         },
         {
           "from": {
-            "key_code": "keypad_6"
+            "key_code": "keypad_6",
+            "modifiers": { "optional": [ "any" ] }
           },
           "to": [ 
             { 
@@ -494,7 +518,8 @@
         },
         {
           "from": {
-            "key_code": "keypad_7"
+            "key_code": "keypad_7",
+            "modifiers": { "optional": [ "any" ] }
           },
           "to": [ 
             { 
@@ -512,7 +537,8 @@
         },
         {
           "from": {
-            "key_code": "keypad_8"
+            "key_code": "keypad_8",
+            "modifiers": { "optional": [ "any" ] }
           },
           "to": [ 
             { 
@@ -530,7 +556,8 @@
         },
         {
           "from": {
-            "key_code": "keypad_9"
+            "key_code": "keypad_9",
+            "modifiers": { "optional": [ "any" ] }
           },
           "to": [ 
             { 
@@ -548,7 +575,8 @@
         },
         {
           "from": {
-            "key_code": "keypad_0"
+            "key_code": "keypad_0",
+            "modifiers": { "optional": [ "any" ] }
           },
           "to": [ 
             { 
@@ -566,7 +594,8 @@
         },
         {
           "from": {
-            "key_code": "keypad_period"
+            "key_code": "keypad_period",
+            "modifiers": { "optional": [ "any" ] }
           },
           "to": [ 
             { 
@@ -584,7 +613,8 @@
         },
         {
           "from": {
-            "key_code": "keypad_slash"
+            "key_code": "keypad_slash",
+            "modifiers": { "optional": [ "any" ] }
           },
           "to": [ 
             { 
@@ -602,7 +632,8 @@
         },
         {
           "from": {
-            "key_code": "keypad_asterisk"
+            "key_code": "keypad_asterisk",
+            "modifiers": { "optional": [ "any" ] }
           },
           "to": [ 
             { 
@@ -620,7 +651,8 @@
         },
         {
           "from": {
-            "key_code": "keypad_hyphen"
+            "key_code": "keypad_hyphen",
+            "modifiers": { "optional": [ "any" ] }
           },
           "to": [ 
             { 
@@ -638,10 +670,12 @@
         },
         {
           "from": {
-            "key_code": "keypad_plus"
+            "key_code": "keypad_plus",
+            "modifiers": { "optional": [ "any" ] }
           },
           "to": [ 
             { 
+              "key_code": "keypad_plus",
               "key_code": "keypad_plus"
             } 
           ],
@@ -656,7 +690,8 @@
         },
         {
           "from": {
-            "key_code": "keypad_enter"
+            "key_code": "keypad_enter",
+            "modifiers": { "optional": [ "any" ] }
           },
           "to": [ 
             { 
@@ -674,7 +709,8 @@
         },
         {
           "from": {
-            "key_code": "keypad_equal_sign"
+            "key_code": "keypad_equal_sign",
+            "modifiers": { "optional": [ "any" ] }
           },
           "to": [ 
             { 
@@ -692,7 +728,8 @@
         },
         {
           "from": {
-            "key_code": "keypad_comma"
+            "key_code": "keypad_comma",
+            "modifiers": { "optional": [ "any" ] }
           },
           "to": [ 
             { 
