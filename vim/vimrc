@@ -103,6 +103,7 @@ set smartcase           " do not ignore if search pattern has CAPS
 " directory settings
 set nobackup            " do not write backup files
 "set noswapfile          " do not write .swp files
+let g:netrw_home=$XDG_CACHE_HOME.'/vim'     " move netrwhist file to local cache
 
 " change the local working directory of the window to be the same as the
 " current file:
