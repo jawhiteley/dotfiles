@@ -255,7 +255,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "~/.dotfiles/Karabiner-elements/lockscreen"
+                                        "shell_command": "~/.dotfiles/Karabiner-elements/lockscreen_macos13.sh"
                                     }
                                 ],
                                 "type": "basic"
