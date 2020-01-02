@@ -10,5 +10,8 @@
 /vim/vimfiles/Plugins/**
 /vim/backup/*
 
+## Karabiner
+Karabiner-elements/automatic_backups/
+
 ## local dotfiles (used by dotsync)
 **/localhost
