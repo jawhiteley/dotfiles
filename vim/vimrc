@@ -209,20 +209,28 @@ let r_indent_ess_comments = 1   "indent R comments like in ESS.
 let r_syntax_folding = 1        "automatically fold code based on syntax
 let vimrplugin_underscore = 0   "do not replace underscores with ' <- '
 let vimrplugin_assign = 2       "use two underscores to insert assignment operator ' <- '
-"let vimrplugin_assign_map = '--' "what to convert into ' <- '; not working?
+
 " .vim/ftplugin/r_jaw.vim contains custom key maps for the assignment operator
 " in R files.
 
 " Nvim-R settings
-"let R_in_buffer = 0    "run R in an external terminal emulator (Tmux)
-"let R_applescript = 1  "run R.app GUI on macOS instead of terminal emulator
-"let R_assign_map = "<M-->"
-let R_assign = 2    "2 underscores will insert assignment operator
+if has('gui_macvim')
+  "let R_in_buffer = 0    "(do not) run R in a vim buffer: use external terminal emulator (Tmux)
+  "let R_applescript = 1  "run R.app GUI on macOS instead of terminal emulator
+endif
+let R_esc_term = 0      "(do not) map <ESC> in terminal
 " set R console to half window width:
 autocmd VimResized * let R_rconsole_width = winwidth(0) / 2
 
 " vim-R-plugin custom key bindings 
-" also see .vim/ftplugin/r_jaw.vim
+" Custom key bindings for R files defined in: .vim/ftplugin/r_jaw.vim
+" I have always had trouble with the plugin insertion of the assignment operator
+" - the custom key bindings in the ft file above work better for me.
+"set <M-->=-
+"let R_assign_map = '<M-->'  "emulate Rstudio assignment operator insertion
+"let R_assign_map = '_'  "key to remap to assignment operator
+let R_assign = 0        "number of characters to replace with assignment operator
+
 " smartindent: do not ignore lines starting with #: X CTL-V CTL-H #
 inoremap # X#
 

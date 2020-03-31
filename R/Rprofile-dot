@@ -18,5 +18,21 @@ if(interactive()) {
   }
 }
 
+### Options for running in a terminal emulator (i.e., nvim-r)
+if (substr(Sys.getenv("TERM"), 1, 5) == "xterm") {
+  ## colorize output in terminal emulators; devtools::install_github('jalvesaq/colorout')
+  library(colorout)
+  ## set output colors for terminal (designed for Solarized light colorscheme in vim)
+  setOutputColors(
+    normal = 94, 
+    ##negnum = 130, zero = 202, number = 166,
+    negnum = 68, zero = 104, number = 33,
+    date = 172, string = 28, const = c(4, NA, NA), 
+    false = 1, true = 4,
+    infinite = 39, index = 30, 
+    stderror = c(3, NA, 88), warn = c(3, 227, 196), error = c(1, 160, 231), 
+    verbose = FALSE, zero.limit = NA
+  )
+}
 
 message("**** Loaded common Rprofile for Jonathan Whiteley ****")

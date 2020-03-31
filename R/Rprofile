@@ -10,4 +10,5 @@ local({
   options(repos=r)
 })
 
+
 message("**** Loaded local .Rprofile for Jonathan Whiteley ****")
