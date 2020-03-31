@@ -214,8 +214,12 @@ let vimrplugin_assign = 2       "use two underscores to insert assignment operat
 " in R files.
 
 " Nvim-R settings
+"let R_in_buffer = 0    "run R in an external terminal emulator (Tmux)
+"let R_applescript = 1  "run R.app GUI on macOS instead of terminal emulator
 "let R_assign_map = "<M-->"
 let R_assign = 2    "2 underscores will insert assignment operator
+" set R console to half window width:
+autocmd VimResized * let R_rconsole_width = winwidth(0) / 2
 
 " vim-R-plugin custom key bindings 
 " also see .vim/ftplugin/r_jaw.vim
