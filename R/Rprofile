@@ -3,5 +3,11 @@ source('~/.dotfiles/R/Rprofile-dot')
 ###=============================================================
 ### System-specific settings
 
+## Preferred CRAN mirror
+local({
+  r <- getOption("repos")
+  r["CRAN"] <- "http://cran.utstat.utoronto.ca"
+  options(repos=r)
+})
 
-# message("**** Loaded local .Rprofile for Jonathan Whiteley ****")
+message("**** Loaded local .Rprofile for Jonathan Whiteley ****")
