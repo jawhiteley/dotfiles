@@ -1,6 +1,6 @@
 " Custom options specific to R-syntax files
 " .vim/ftplugin/r_jaw.vim
-" Jonathan Whiteley 2011-10, 2020-03-31
+" Jonathan Whiteley 2011-10, 2020-04-01
 
 " Vim-R-plugin custom key bindings 
 
@@ -37,5 +37,4 @@ if has('mac')
 endif
 " Not working: can't figure out how to map CTRL+= in vim :(
 inoremap <expr> <C-=> R_assignment_operator
-
 
