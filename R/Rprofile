@@ -6,7 +6,7 @@ source('~/.dotfiles/R/Rprofile-dot')
 ## Preferred CRAN mirror
 local({
   r <- getOption("repos")
-  r["CRAN"] <- "http://cran.utstat.utoronto.ca"
+  r["CRAN"] <- "https://cloud.r-project.org/"
   options(repos=r)
 })
 
