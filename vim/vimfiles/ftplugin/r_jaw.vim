@@ -5,17 +5,20 @@
 " Vim-R-plugin custom key bindings 
 
 " alternative to replacing '_' with '<-'?
-let R_assignment_operator = ' <- '   " Define variable to store replacement string
-" Literal key remap (no variable) --- ALL {lhs} characters are inserted:
+let R_assignment_operator = ' <- '  " Define variable to store replacement string
+let R_pipe_operator = ' %>% '       " Defined in the `magrittr` package, commonly used in tidyverse)
+" Literal key remap (no variable) --- ALL {rhs} characters are inserted:
 "inoremap -- <Space><lt>-<Space>
-" Remap to an expression (variable value):
+" Remap to an expression (variable value) in {rhs}:
 inoremap <expr> -- R_assignment_operator
 inoremap <expr> __ R_assignment_operator
-inoremap <C-_> <Space>-><Space>
+inoremap <expr> <C-_> R_pipe_operator
+inoremap <C-_><C-_> <Space>-><Space>
 " Typing <C--> sends the same keycode as <C-_> to vim (no way to map <C--> separately, it seems)
 "inoremap <expr> <C--> R_assignment_operator
 " Emulate Rstudio behaviour
 inoremap <expr> <M--> R_assignment_operator
+inoremap <expr> <M--><M--> R_pipe_operator
 if has('mac') 
   " on a Mac, Alt-* (Opt+*) often produces some other character.  
   "   Alt-- = – (n-dash)
@@ -23,6 +26,7 @@ if has('mac')
   " Remap – (en-dash) to Alt--, recusively so it triggers the <M--> behaviour defined above.
   "imap – <M-->
   "inoremap <D-–> –
+  imap –– <M--><M-->
   " I don't actually like RStudio's default behaviour of remapping Alt--,
   " which prevents input of an en-dash in the editor.
   " Mind you, this is not a valid character in open code, so it would rarely be needed.
