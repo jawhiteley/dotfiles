@@ -1,4 +1,4 @@
-" Jonathan Whiteley     2015-12-14
+" Jonathan Whiteley     2015-12-14; 2020-04-08
 " Personal settings for Vim common to all platforms and systems
 
 " Prevent vim from emulating the original vi's bugs and limitations
@@ -78,7 +78,7 @@ if v:version >= 700     " try only works in vim 7 or later
     "Plug 'Vim-R-plugin'    " deprecated
 
     " Markdown preview?  'suan/vim-instant-markdown' ; 'iamcco/markdown-preview.vim' ; 'JamshedVesuna/vim-markdown-preview'
-    Plug 'suan/vim-instant-markdown'
+    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
     " Add plugins to &runtimepath
     call plug#end()
@@ -179,6 +179,7 @@ set softtabstop=4   " tab indents rather than inserting <TAB>
 set shiftwidth=2    " # of spaces for indentation
 
 
+" ________________________________________________________________
 " Custom key bindings
 
 " <C-]> goes to a linked tag, <C-T> goes back.  
@@ -195,10 +196,14 @@ xmap <leader>a <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap <leader>a <Plug>(EasyAlign)
 
-" Vim MarkDown Preview?
-"noremap <leader>p :Mm<CR>
-" conflicts with Vim-R plugin: map <D-CR> :Mm<CR>
-
+" MarkDown Preview
+nmap <leader>mm <Plug>MarkdownPreview
+nmap <C-p> <Plug>MarkdownPreview
+nmap <C-M-p> <Plug>MarkdownPreviewStop
+nmap <C-m> <Plug>MarkdownPreviewToggle
+if has('mac')
+  nmap <C-π> <C-M-p>
+endif
 
 
 " ================================================================
