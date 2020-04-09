@@ -1,11 +1,13 @@
 To Do:
 
 + Replicate universal key mapping from Karabiner in Karabiner-Elements
-  - Finish NumPad mappings (Remote Buddy; never really worked)
-    - keypad_slash -> remote off
-    - keypad_multiply -> remote on
-    - keypad_dot -> remote menu
-    - 2,4, 5, 6, 8: menu navigation
+  + Finish NumPad mappings (Remote Buddy)
+    ; requires matching keyboard shortcuts in Remote Buddy)
+    ; order with other NumPad rules matters (these should come first to override others)
+    + keypad_slash -> remote off
+    + keypad_multiply -> remote on
+    + keypad_dot (or keypad_enter) -> remote menu
+    + 2, 4, 5, 6, 8: menu navigation
 + Replicate Microsoft Sculpt device-specific mappings
 + Replicate Steam Controller device-specific mappings
 + update lockscreen script for macOS 13 (10.13) High Sierra and above.

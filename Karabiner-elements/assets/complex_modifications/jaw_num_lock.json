@@ -53,6 +53,230 @@
       ]
     },
     {
+      "description": "NumPad Remote Buddy HotKey Remote with NumLock OFF and remote_lock ON",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "keypad_slash",
+            "modifiers": { "optional": [ "any" ] }
+          },
+          "to": [ 
+            {
+              "set_variable": {
+                "name": "remote_lock",
+                "value": 0
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 0
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_asterisk",
+            "modifiers": { "optional": [ "any" ] }
+          },
+          "to": [ 
+            {
+              "set_variable": {
+                "name": "remote_lock",
+                "value": 1
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 0
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_2",
+            "modifiers": { "optional": [ "any" ] }
+          },
+          "to": [ 
+            { 
+              "key_code": "keypad_2",
+              "modifiers": [ "left_shift" ]
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 0
+            },
+            {
+              "type": "variable_if",
+              "name": "remote_lock",
+              "value": 1
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_4",
+            "modifiers": { "optional": [ "any" ] }
+          },
+          "to": [ 
+            { 
+              "key_code": "keypad_4",
+              "modifiers": [ "left_shift" ]
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 0
+            },
+            {
+              "type": "variable_if",
+              "name": "remote_lock",
+              "value": 1
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_5",
+            "modifiers": { "optional": [ "any" ] }
+          },
+          "to": [ 
+            { 
+              "key_code": "keypad_5",
+              "modifiers": [ "left_shift" ]
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 0
+            },
+            {
+              "type": "variable_if",
+              "name": "remote_lock",
+              "value": 1
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_6",
+            "modifiers": { "optional": [ "any" ] }
+          },
+          "to": [ 
+            { 
+              "key_code": "keypad_6",
+              "modifiers": [ "left_shift" ]
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 0
+            },
+            {
+              "type": "variable_if",
+              "name": "remote_lock",
+              "value": 1
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_8",
+            "modifiers": { "optional": [ "any" ] }
+          },
+          "to": [ 
+            { 
+              "key_code": "keypad_8",
+              "modifiers": [ "left_shift" ]
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 0
+            },
+            {
+              "type": "variable_if",
+              "name": "remote_lock",
+              "value": 1
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_period",
+            "modifiers": { "optional": [ "any" ] }
+          },
+          "to": [
+            {
+              "key_code": "keypad_enter",
+              "modifiers": [ "left_shift" ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 0
+            },
+            {
+              "type": "variable_if",
+              "name": "remote_lock",
+              "value": 1
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "keypad_enter",
+            "modifiers": { "optional": [ "any" ] }
+          },
+          "to": [ 
+            { 
+              "key_code": "keypad_enter",
+              "modifiers": [ "left_shift" ]
+            } 
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "num_lock",
+              "value": 0
+            },
+            {
+              "type": "variable_if",
+              "name": "remote_lock",
+              "value": 1
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
       "description": "NumPad media keys with NumLock OFF",
       "manipulators": [
         {
