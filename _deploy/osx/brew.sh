@@ -89,7 +89,7 @@ brew cask install firefox
 brew cask install dropbox
 brew cask install carbon-copy-cloner
 brew cask install moom    # window management
-brew cask install keepassx
+brew cask install keepassxc
 #brew cask install macpass
 brew cask install github
 #brew cask install GitX     # I like brotherbard's fork: https://github.com/brotherbard/gitx
@@ -98,12 +98,12 @@ brew cask install github
 
 #===============================================================
 # System Utilities #
-brew cask install karabiner    	# Remap keys for OS X 10.9--10.11 (now karabiner-elements)
-brew cask install seil         	# Remap Capslock and other things Karabiner can not do.
+brew cask install karabiner-elements    	# Remap keys for OS X 10.9--10.11 (now karabiner-elements)
+#brew cask install seil         	# Remap Capslock and other things Karabiner can not do.
 #brew cask install usb-overdrive     # generic driver for USB input devices without native OS X support
 
 # CandyBar (IconFactory): icon library. discontinued, but might still work
-brew cask install candybar #--appdir="/Applications/Utilities"	# admin password needed to install to /Applications/Utilities
+#brew cask install candybar #--appdir="/Applications/Utilities"	# admin password needed to install to /Applications/Utilities
 # free license:
 # https://panic.com/bin/setup.php/cb3/PPQA-YAMA-E3KP-VHXG-B6AL-L
 
@@ -115,7 +115,7 @@ brew cask install evernote      # or install from the Mac App Store
 #brew cask install omnifocus    # I don't have a license for the newest version yet. 
 # https://www.omnigroup.com/download
 # custom formula for the version I want, relative to current directory:
-brew cask install ./Casks/my-omnifocus.rb
+#brew cask install ./Casks/my-omnifocus.rb
 #brew cask install things       # I prefer OmniFocus, but Things is pretty awesome in its own way.
 brew cask install moneywell
 brew cask install delicious-library
@@ -126,7 +126,7 @@ brew cask install delicious-library
 #brew cask install microsoft-office-365
 brew cask install libreoffice
 brew cask install zotero
-#brew cask install virtualbox    # Open-Source virtualization
+brew cask install virtualbox    # Open-Source virtualization
 
 # (La)TeX
 # Homebrew still recommends downloading and installing a MacTeX distribution
