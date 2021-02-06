@@ -22,7 +22,8 @@
 bash/bashrc
 bash/bash_profile
 #git/gitconfig
-#git/gitignore
+git/gitignore
+#git/gitignore:.config/git/ignore
 #git/gitattributes
 #git/tigrc
 #git/gitk
