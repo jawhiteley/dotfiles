@@ -53,6 +53,8 @@ if v:version >= 700     " try only works in vim 7 or later
     Plug 'altercation/vim-colors-solarized'
     " Zenburn colour scheme --- http://kippura.org/zenburnpage/
     Plug 'jnurmine/Zenburn'
+    " Gruvbox 'Retro groove' colour scheme --- https://github.com/morhetz/gruvbox
+    Plug 'morhetz/gruvbox'
     " vim-json : JSON-specific highlighting, warnings, and folding.
     Plug 'elzr/vim-json'
     " Automatic text alignment ('Align.vba' no longer seems to be maintained)
