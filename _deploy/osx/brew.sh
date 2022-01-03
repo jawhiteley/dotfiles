@@ -53,8 +53,8 @@ brew install wget --with-iri
 # Unison will only sync with other systems that have the *same version* of unison installed --- including the same build environment (ocaml versions, for example). 
 if true; then
   # Install the most recent version of Unison: if all systems support it.
-  brew install unison    # command-line version (latest)
-  brew install --cask unison    # GUI version (latest)
+  # brew install unison    # command-line version (latest)
+  brew install --cask unison    # GUI version (latest) - includes cli: `unison -i -ui text`
   # On recent versions of OS X (or macOS), you might get an unhelpful message about the Unison app being damaged:
   # https://github.com/bcpierce00/unison/wiki/CI-Binary-instructions
   xattr -cr /Applications/Unison.app
