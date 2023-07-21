@@ -16,3 +16,5 @@ export PATH
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles -bool true; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles -bool false; killall Finder /System/Library/CoreServices/Finder.app'
 
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
