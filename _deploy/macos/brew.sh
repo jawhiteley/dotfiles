@@ -79,7 +79,7 @@ fi
 #brew install --cask cakebrew   # GUI for Homebrew :)
 brew install --cask macvim	
 #brew install markdown    # included in multimarkdown
-brew install multimarkdown
+brew install multimarkdown    # replace with pandoc?
 
 ## Browsers
 brew install --cask google-chrome
