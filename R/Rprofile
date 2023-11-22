@@ -10,5 +10,8 @@ local({
   options(repos=r)
 })
 
+## Add Homebrew to the PATH for R's shell
+Sys.setenv(PATH=paste("/opt/homebrew/bin", Sys.getenv("PATH"), sep=":"))
+
 
 message("**** Loaded local .Rprofile for Jonathan Whiteley ****")

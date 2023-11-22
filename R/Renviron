@@ -2,3 +2,6 @@
 # Needed for `openxlsx` package.
 R_UNZIPCMD='unzip'
 R_ZIPCMD='zip'
+
+## Example of appending to the PATH variable
+# PATH="/opt/homebrew/bin:${PATH}"
