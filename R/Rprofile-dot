@@ -3,15 +3,15 @@
 ################################################################################
 
 ## http://stackoverflow.com/questions/1189759/expert-r-users-whats-in-your-rprofile
-options("width"=80)                # display width
+options("width" = 80) # display width
 
 ## from the AER book by Zeileis and Kleiber
-options(prompt="R> ", digits=4, show.signif.stars=FALSE)
-options(continue="... ")    # more obvious than "+"
+options(prompt = "R> ", digits = 4, show.signif.stars = FALSE)
+options(continue = "... ") # more obvious than "+"
 
 ## Stop prompting me to save the workspace
-q <- function (save="no", ...) {
-  quit(save=save, ...)
+q <- function(save = "no", ...) {
+  quit(save = save, ...)
 }
 
 ### TODO: check for key (default) packages and install them if missing.
@@ -19,26 +19,28 @@ q <- function (save="no", ...) {
 
 ### For vim-R plugin; now Nvim-R, which uses it's own built-in nvimcom
 ## http://www.lepem.ufc.br/jaa/r-plugin.html#r-plugin-installation
-if(interactive()) {
-  if (suppressWarnings(require(vimcom, quietly=TRUE))) {
+if (interactive()) {
+  if (suppressWarnings(require(vimcom, quietly = TRUE))) {
     options(vimcom.verbose = 1)
   }
 }
 
 ### Options for running in a terminal emulator (i.e., nvim-r)
-if (substr(Sys.getenv("TERM"), 1, 5) == "xterm") {
+if (substr(Sys.getenv("TERM"), 1, 5) == "xterm" &&
+    .Platform$OS.type != "windows"
+) {
   ## colorize output in terminal emulators; remotes::install_github('jalvesaq/colorout')
   ##    TODO: install package if missing (also requires devtools/remotes package)
   if (require(colorout)) {
     ## set output colours for terminal (designed for Solarized light colorscheme in vim)
     setOutputColors(
-      normal = 94, 
-      ##negnum = 130, zero = 202, number = 166,
+      normal = 94,
+      ## negnum = 130, zero = 202, number = 166,
       negnum = 68, zero = 104, number = 33,
-      date = 172, string = 28, const = c(4, NA, NA), 
+      date = 172, string = 28, const = c(4, NA, NA),
       false = 1, true = 4,
-      infinite = 39, index = 30, 
-      stderror = c(3, NA, 88), warn = c(3, 227, 196), error = c(1, 160, 231), 
+      infinite = 39, index = 30,
+      stderror = c(3, NA, 88), warn = c(3, 227, 196), error = c(1, 160, 231),
       verbose = FALSE, zero.limit = NA
     )
   }
